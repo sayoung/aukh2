@@ -1,0 +1,57 @@
+<?php
+
+/**
+ * @file
+ * Contains dardev_appel_offre.module.
+ */
+use Drupal\block\Entity\Block;
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\dardev_appel_offre\Newsletter\Newsletter;
+
+/**
+ * Implements hook_help().
+ */
+function dardev_appel_offre_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the dardev_appel_offre module.
+    case 'help.page.dardev_appel_offre':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Collect emails and send newsletter to newsletter.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+
+function dardev_appel_offre_theme_suggestions_newsletter(array $variables) {
+
+  $suggestions = [];
+  $suggestions[] = 'hookname__' . $variables['form']->form['#build_id'];
+
+  
+  return $suggestions;
+}
+
+
+function dardev_appel_offre_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+    \Drupal::logger('dardev_appel_offre')->notice('Form ID: ' . $form_id);
+
+  if (strpos($form_id, 'webform_submission_appel_d_offre_node_') !== FALSE) {
+    $form['actions']['submit']['#submit'][] = 'dardev_appel_offre_custom_submit_handler';
+  }
+}
+
+
+
+
+function dardev_appel_offre_custom_submit_handler($form, \Drupal\Core\Form\FormStateInterface $form_state) {
+	$node = $form_state->getFormObject()->getEntity()->getSourceEntity();
+	  if ($node instanceof \Drupal\node\NodeInterface && $node->getType() == 'appel_d_offre') {
+  $_SESSION['has_submitted_form_' . $form['#webform_id']] = TRUE;
+  \Drupal::logger('dardev_appel_offre')->notice('Form submitted: ' . $form['#webform_id']);
+  \Drupal::logger('dardev_appel_offre')->notice('Session variable: ' . var_export($_SESSION['has_submitted_form_' . $form['#webform_id']], TRUE));
+}
+}

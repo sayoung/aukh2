@@ -1,0 +1,7 @@
+md_new_prestation.admin:
+  path: '/admin/config/instruction/parametre/custom_mail'
+  defaults:
+    _form: '\Drupal\md_new_prestation\Form\InstructionConfigIorm'
+    _title: 'custom mail'
+  requirements:
+    _permission: 'administer site configuration'

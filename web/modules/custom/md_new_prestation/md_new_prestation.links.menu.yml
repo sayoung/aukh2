@@ -1,0 +1,5 @@
+md_new_prestation.admin:
+  title: 'Paramètres Rokhas '
+  description: 'Synchroniser les Pré-instruction'
+  parent: d8mail.admin_instruction
+  route_name: md_new_prestation.admin

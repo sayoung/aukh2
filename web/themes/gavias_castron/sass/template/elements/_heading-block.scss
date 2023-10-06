@@ -1,0 +1,205 @@
+.gsc-heading{
+   padding: 0 0 35px;
+   display: block;
+   width: 100%;
+   @include clearfix();
+   @media(max-width: $screen-sm-max){
+     padding: 0 0 30px;
+     &.heading-bg-white{
+       padding: 30px 20px!important;
+       background: $white;
+     }
+   }
+   .title{
+     margin: 0;
+     position: relative;
+   }
+   .sub-title{
+     color: #ABADBA;
+     font-size: 12px;
+     text-transform: uppercase;
+     letter-spacing: 2px;
+     margin-bottom: 2px;
+     font-family: $font-second;
+     font-weight: 600;
+   }
+   .title-desc{
+     max-width: 700px;
+     margin: 0 auto;
+     margin-top: 0;
+     line-height: 28px;
+     p{
+       margin-bottom: 0;
+     }
+   }
+   &.align-center{
+     text-align: center;
+   }
+  &.align-left{
+    text-align: left;
+    .title-desc{
+      float: left;
+    }
+    .title-icon{
+      padding-left: 50px;
+    }
+  }
+  &.align-left-2{
+    .heading-top{
+      width: 65%;
+      float: left;
+      position: relative;
+      padding-left: 15px;
+      @media(max-width: $screen-sm-max){
+        width: 100%;
+      }
+      &:after{
+        content: '';
+        @include size(2px, 100%);
+        background: $theme-color;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+      }
+    }
+    .heading-bottom{
+      width: 35%;
+      float: left;
+      text-align: right;
+      .title-desc{
+        margin-top: 0;
+      }
+      @media(max-width: $screen-sm-max){
+        width: 100%;
+        margin-top: 10px;
+        text-align: left;
+      }
+    }
+  }
+   &.align-right{
+    text-align: right;
+    .title-desc{
+      float: right;
+    }
+   }
+   &.style-1{
+     .title{
+       font-size: 36px;
+       font-weight: 700;
+       position: relative;
+       padding-bottom: 0;
+       letter-spacing: -1px;
+       @media(max-width: $screen-sm-max){
+         font-size: 28px;
+       }
+       span{
+         span{
+           font-weight: 300;
+         }
+       }
+     }
+     .title-desc{
+       margin-top: 5px;
+     }
+     &.align-left{
+       .title{
+         &:after{
+           left: 0;
+           margin-left: 0;
+         }
+       }
+     }
+     &.align-right{
+       .title{
+         &:after{
+           right: 0;
+           margin-left: 0;
+         }
+       }
+     }
+   }
+   &.style-2{
+     padding: 0 0 30px;
+     .title{  
+       font-size: 30px;
+       text-transform: capitalize;
+       line-height: 38px;
+       font-weight: 700;
+       letter-spacing: -1px;
+       @media(max-width: $screen-sm-max){
+         font-size: 24px;
+         line-height: 32px;
+       }
+     }
+    .title-desc{
+      margin-top: 5px;
+    }
+  }
+  &.style-3{
+    padding: 30px;
+    background: $theme-color;
+    color: $white;
+    .title{
+      color: $white;
+      font-weight: 700;
+      letter-spacing: -1px;
+    }
+    .title-desc{
+      margin-top: 0;
+    }
+  }
+  &.style-4{
+    margin-top: 30px;
+    .heading-top{
+      width: 65%;
+      float: left;
+      position: relative;
+      @media(max-width: $screen-sm-max){
+        width: 100%;
+      }
+      .title{
+        font-size: 18px;
+        color: $black;
+        line-height: 1.4;
+        max-width: 580px;
+        font-weight: 500;
+      }
+    }
+    .heading-bottom{
+      width: 35%;
+      float: left;
+      text-align: right;
+      .title-desc{
+        margin-top: 0;
+        width: 100%;
+      }
+      @media(max-width: $screen-sm-max){
+        width: 100%;
+        margin-top: 10px;
+        text-align: left;
+      }
+    }
+  }
+  &.text-light{
+    .title-sub{
+      color: $white;
+    }
+    .title{
+      color: $white;
+    }
+    .sub-title span{
+      color: rgba(255, 255, 255, 0.9);
+    }
+    &.align-left-2{ 
+      .heading-top{
+        &:after{
+          background: $white;
+        }
+      }
+    }
+    .title-desc{
+      color: #f5f5f5;
+    }
+  }
+}

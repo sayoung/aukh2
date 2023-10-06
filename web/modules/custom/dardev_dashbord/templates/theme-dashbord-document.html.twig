@@ -1,0 +1,118 @@
+
+<main class="page-content clearfix" role="main">
+    <div class="region region-content">
+        <div id="block-seven-content" class="block block-system block-system-main-block">
+            <div class=" layout-column-f">
+                <h2> Rokhas</h2>
+            		<form id="form" name="form" action="/admin/dashbord/document" method="POST" class="form-inline">
+            			<div class="form-group">
+            				<label for="startDate">Date de début : </label>
+            				<input id="startDate" name="from" type="text" class="form-control" />
+            				&nbsp;
+            				<label for="endDate">Date de fin : </label>
+            				<input id="endDate" name="to" type="text" class="form-control" />
+            			</div>
+            			<button type="submit" class="btn btn-primary mb-2">Confirm </button>
+            		</form>
+            </div>
+            <div class=" layout-column-f">
+                <div class="clearfix">
+                    		<div class="container" id="tab">
+                    		    <div class="row">
+                    				{% set yearr = now|date('Y') %}
+                    				{% set years  = "01-01-"~ yearr    %}
+                    				{% if from == years %}
+                    				<h2>Période de recherche : depuis <span class="date_note"> {{from}}  </span> </h2>
+                    				{% else %}
+                    				<h2>Période de recherche : du <span class="date_note"> {{from }}</span> au <span class="date_note"> {{to }}</span> </h2>
+                    				{% endif %}
+                    				
+                    			</div>
+                    			<div class="row">
+                    				<div  class="field field--name-title-text field--type-string ">
+                    					<h3>{% trans %}Les dossiers traités {% endtrans %} </h3>
+                    				</div>	 
+			                    </div>
+                    			<div class="row text-center">
+                					<div class="col">
+                						<div class="counter_nru">
+                			 				<h2 class="timer count-title count-number">  {{ count_livre }} </h2>
+                			   				<p class="count-text ">Traités</p>
+                						</div>
+                					</div> 
+                					<div class="col">
+                						<div class="counter_nru">
+                			  				<h2 class="timer count-title count-number">{{nador_count}}</h2>
+                			  				<p class="count-text ">Nador</p>
+                						</div>
+                					</div>
+                					<div class="col">
+                						<div class="counter_nru">
+                			  				<h2 class="timer count-title count-number">{{driouch_count}}</h2>
+                			  				<p class="count-text ">Driouch</p>
+                						</div>
+                					</div>
+                					<div class="col">
+                						<div class="counter_nru">
+                							<h2 class="timer count-title count-number">{{guercif_count}}</h2>
+                							<p class="count-text ">Guercif</p>
+                			  			</div>
+                					</div>
+                					<div class="col">
+                						<div class="counter_nru">
+                							<h2 class="timer count-title count-number">{{total_livre}}</h2>
+                							<p class="count-text ">Total en DH</p>
+                			  			</div>
+                					</div>
+				                </div>
+                    	</div>
+                </div>
+            </div>
+            <div class=" layout-column-f">
+                <div class="clearfix">
+                    <div class="container" id="tab">
+                        <div class="row">
+            				<div  class="field field--name-title-text field--type-string ">
+            				<h3>	{% trans %}Les dossiers annulés {% endtrans %}</h3>
+            				</div>	
+            			</div>
+            							<div class="row text-center">
+						<div class="col">
+							<div class="counter_nru">
+								<h2 class="timer count-title count-number">  {{ count_annuler }}  </h2>
+								<p class="count-text ">Annulés  </p>
+							</div>
+						</div>
+					    <div class="col">
+						  	<div class="counter_nru">
+			  					<h2 class="timer count-title count-number">{{nador_count_a}}</h2>
+			  					<p class="count-text ">Nador</p>
+							</div>
+						</div>
+					    <div class="col">
+					  		<div class="counter_nru">
+			  					<h2 class="timer count-title count-number">{{driouch_count_a}}</h2>
+			  					<p class="count-text ">Driouch</p>
+							</div>
+					  	</div>
+					  	<div class="col">
+							<div class="counter_nru">
+								<h2 class="timer count-title count-number">{{guercif_count_a}}</h2>
+								<p class="count-text ">Guercif </p>
+			  				</div>
+						</div>
+						<div class="col">
+							<div class="counter_nru">
+								<h2 class="timer count-title count-number">{{total_annuler}}</h2>
+								<p class="count-text ">Total en DH </p>
+			  				</div>
+						</div>
+				</div>
+            			
+                    </div>    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

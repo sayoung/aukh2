@@ -1,0 +1,56 @@
+<div class="upper-wrapper">
+  <h2 class="secondary-heading">{{ view.getTitle()|raw }}</h2>
+</div>
+<div class="map-carousel-wrapper">
+  <div
+    id="carouselExampleInterval"
+    class="carousel slide"
+    data-bs-ride="carousel"
+  >
+    <div class="carousel-inner">
+      {% for key, row in rows %}
+      <div class="carousel-item {% if key == 0 %} active{% endif %}" data-bs-interval="3000">
+        <h4 class="map-carousel-caption">
+          {% set ttl = row.title|render|striptags|raw %} {% apply spaceless %}{{
+          ttl|length > 100 ? ttl|truncate(100, '...')|raw : ttl|raw }}{%
+          endapply %}
+        </h4>
+        <img
+          src="{% if row.image %}{% apply spaceless %}{{
+            row.image | render | striptags
+          }}{% endapply %}{% endif %}"
+          class="d-block w-100"
+          alt="{% apply spaceless %}{{
+            row.title | render | striptags | raw
+          }}{% endapply %}"
+        />
+        <a
+          href="{% apply spaceless %}{{
+            row.url | render | striptags
+          }}{% endapply %}"
+          class="see-more-btn"
+          >{{ "Lire suite" | t }}</a
+        >
+      </div>
+      {% endfor %}
+    </div>
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#carouselExampleInterval"
+      data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#carouselExampleInterval"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+</div>

@@ -1,0 +1,62 @@
+dardev_dashbord.admin_dashbord:
+  title: 'Tableau de bord'
+  route_name: 'dardev_dashbord.admin_dashbord'
+  parent: 'system.admin'
+  description: 'Administer and configure your Commerce store.'
+  weight: -9
+
+dardev_dashbord.note_link:
+  title: 'E-note'
+  description: 'Tableau de bord des notes de renseignements'
+  parent: dardev_dashbord.admin_dashbord
+  route_name: dardev_dashbord.note
+
+
+dardev_dashbord.rokhas_link:
+  title: 'Rokhas'
+  description: 'Tableau de bord des dossier'
+  parent: dardev_dashbord.admin_dashbord
+  route_name: dardev_dashbord.rokhas
+
+dardev_dashbord.document_link:
+  title: 'Document'
+  description: 'Tableau de bord des E-document'
+  parent: dardev_dashbord.admin_dashbord
+  route_name: dardev_dashbord.document
+
+
+dardev_dashbord.preinstruction_link:
+  title: 'Pre-instruction'
+  description: 'Tableau de bord des Pre-instruction'
+  parent: dardev_dashbord.admin_dashbord
+  route_name: dardev_dashbord.preinstruction
+
+dardev_dashbord.holidays_link:
+  title: 'Gestion des jours fériés'
+  description: 'Tableau de bord des jours fériés'
+  parent: dardev_dashbord.admin_dashbord
+  route_name: dardev_dashbord.holidays
+
+dardev_dashbord.export_link:
+  title: 'Exportation'
+  description: 'Tableau de bord exportation des données'
+  parent: dardev_dashbord.admin_dashbord
+  route_name: dardev_dashbord.export
+
+dardev_dashbord.export_rokhas_link:
+  title: 'Exportation Rokhas'
+  description: 'Tableau de bord exportation des données Rokhas'
+  parent: dardev_dashbord.admin_dashbord
+  route_name: dardev_dashbord.export_rokhas
+
+dardev_dashbord.statistic_link:
+  title: 'Statistique E-Notes'
+  description: 'Tableau de bord de statistique'
+  parent: dardev_dashbord.admin_dashbord
+  route_name: dardev_dashbord.statistic
+
+dardev_dashbord.statistic_rokhas_link:
+  title: 'Statistique Rokhas'
+  description: 'Tableau de bord de statistique rokhas'
+  parent: dardev_dashbord.admin_dashbord
+  route_name: dardev_dashbord.statistic_rokhas

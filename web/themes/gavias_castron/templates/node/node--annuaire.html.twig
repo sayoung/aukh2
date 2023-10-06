@@ -1,0 +1,49 @@
+<!-- Start Display article for teaser page -->
+{% if view_mode == 'teaser' %} 
+  <div class="post-block teaser-1 text-center">
+    <div class="post-image">
+      {{ content.field_photo_ }}
+    </div>
+    <div class="post-content">
+        <div class="post-meta">
+          <span class="post-created"><i class="far fa-clock"></i> {{ node.getCreatedTime()|date("d M") }} </span>
+          <span class="author"><i class="far fa-user-circle"></i>{{ author_name }}</span>
+          <span class="post-comment"><i class="fas fa-comments"></i> {{ comment_count }}{{' Comments'|t}}</span>
+        </div>
+        <h3 class="post-title"> <a href="{{ url }}" rel="bookmark">{{ label }}</a> </h3> 
+        <div class="post-body">{{ content.body }}</div>          
+        <div class="post-readmore"> <a href="{{ url }}" rel="bookmark"><i class="fas fa-angle-right"></i></a> </div>          
+    </div>
+  </div>
+
+
+<!-- End Display article for teaser page -->
+{% elseif view_mode == 'teaser_3' %} 
+  <div class="post-block teaser-3">
+             <div class="widget gva-job-box clearfix " >
+				<div class="box-content">
+				   <div class="logo-inner w-100">
+					  <img src="{{ file_url(content.field_photo_['#items'].entity.uri.value) }}" alt="{{ label }}"/>
+				   </div>   
+				   <div class="content-inner w-100">
+					  <div class="job-type w-100">{{ label }}</div>
+					  <div class="information">
+						 <ul>
+							<li><i class="fas fa-external-link"></i><a target="_blank" href="{{ node.field_site_web_.uri }}">{{ node.field_site_web_.title }}</a></li>
+							<li><i class="fas fa-phone"></i>{{ node.field_telephone_.0.value }}</li>
+							<li><i class="fas fa-fax"></i>{{ node.field_fax.0.value }}</li>
+						 </ul>
+					  </div>
+				   </div>
+				</div>  
+			</div>
+  </div>
+
+
+<!-- End Display article for teaser page -->
+{% else %}
+<!-- Start Display article for detail page -->
+
+
+<!-- End Display article for detail page -->
+{% endif %}

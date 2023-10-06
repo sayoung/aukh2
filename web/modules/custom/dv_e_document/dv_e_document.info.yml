@@ -1,0 +1,5 @@
+name: dv_e_document
+type: module
+description: make E-Vente modulable.
+core_version_requirement: ^9.3 || ^10
+package: DARDEV

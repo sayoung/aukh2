@@ -1,0 +1,80 @@
+dardev_dashbord.admin_dashbord:
+  path: '/admin/dashbord'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Dashbord'
+  requirements:
+    _permission: 'TRUE'
+
+dardev_dashbord.note:
+    path: 'admin/dashbord/note'
+    defaults:
+        _controller: 'Drupal\dardev_dashbord\Controller\EnoteController::getNotesTraitee'
+        _title: 'Tableau de bord'
+    requirements:
+        _access: 'TRUE'
+
+
+dardev_dashbord.rokhas:
+    path: 'admin/dashbord/rokhas'
+    defaults:
+        _controller: 'Drupal\dardev_dashbord\Controller\RokhasController::getRokhasTraitee'
+        _title: 'Tableau de bord'
+    requirements:
+        _access: 'TRUE'
+
+dardev_dashbord.document:
+    path: 'admin/dashbord/document'
+    defaults:
+        _controller: 'Drupal\dardev_dashbord\Controller\DocumentController::GetDocuments'
+        _title: 'Tableau de bord'
+    requirements:
+        _access: 'TRUE'
+
+dardev_dashbord.preinstruction:
+    path: 'admin/dashbord/preinstruction'
+    defaults:
+        _controller: 'Drupal\dardev_dashbord\Controller\PreInstructionController::getPreInstructionTraitee'
+        _title: 'Tableau de bord'
+    requirements:
+        _access: 'TRUE'
+
+dardev_dashbord.holidays:
+  path: 'admin/dashbord/holidays'
+  defaults:
+    _form: 'Drupal\dardev_dashbord\Form\Holidays'
+    _title: 'Gestion des jours fériés'
+  requirements:
+    _access: 'TRUE'
+
+dardev_dashbord.export:
+  path: 'admin/dashbord/export'
+  defaults:
+    _form: 'Drupal\dardev_dashbord\Form\Export'
+    _title: 'Exportation des données'
+  requirements:
+    _access: 'TRUE'
+
+dardev_dashbord.statistic:
+  path: '/admin/dashbord/statistic'
+  defaults:
+    _controller: '\Drupal\dardev_dashbord\Controller\StatisticController::buildForm'
+    _title: 'Statistique des données'
+  requirements:
+    _permission: 'TRUE'
+
+dardev_dashbord.export_rokhas:
+  path: 'admin/dashbord/export_rokhas'
+  defaults:
+    _form: 'Drupal\dardev_dashbord\Form\ExportRokhas'
+    _title: 'Exportation des données Rokhas'
+  requirements:
+    _access: 'TRUE'
+
+dardev_dashbord.statistic_rokhas:
+  path: '/admin/dashbord/statistic-rokhas'
+  defaults:
+    _controller: '\Drupal\dardev_dashbord\Controller\StatisticController::buildFormRokhas'
+    _title: 'Statistique des données'
+  requirements:
+    _permission: 'TRUE'

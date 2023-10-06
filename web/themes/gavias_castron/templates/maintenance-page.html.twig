@@ -1,0 +1,133 @@
+{#
+/**
+ * @file
+ * Bartik's theme implementation to display a single Drupal page while offline.
+ *
+ * All available variables are mirrored in page.html.twig.
+ *
+ * @see template_preprocess_maintenance_page()
+ */
+ #}
+ <link rel="stylesheet" type="text/css" media="all" href="{% set base_url = url('<front>')|render|split('/', -1)|join('/') %}/themes/gavias_castron/css/all/css/style.css" />
+ <script type="text/javascript" src="{% set base_url = url('<front>')|render|split('/', -1)|join('/') %}/themes/gavias_castron/css/all/js/modernizr.custom.72882.js"></script>
+<body>
+	<div class="wrap">
+
+		<!-- Main -->
+		<div id="main0">
+			<div class="inner">
+
+				<!-- Header -->
+				<header class="site-header">
+					<h1 class="site-title fade-in"><img src="{% set base_url = url('<front>')|render|split('/', -1)|join('/') %}/themes/gavias_castron/css/all/images/logo.png" width="240" height="52" alt="InTime" /></h1>
+				</header>
+
+				<!-- Content -->
+				<section class="content">
+
+					<h1 class="section-title">Ce site est en cours de mise à jour</h1>
+					<div class="social social1">
+					<ul>
+			 <li><a href="http://192.186.209.182/necommissionPP?tmpl=component">Programmes & Résultats des commissions des Petits Projets</a></li>
+
+			<li><a href="http://192.186.209.182/necommissionGP/?tmpl=component">Programmes & Résultats des commissions des Grands Projets</a></li>
+					</ul>
+					</div>
+					<!-- <p class="subtitle">Time Left Until Launching</p> --> 
+
+					<!-- Countdown timer -->
+					<!-- <div id="timer"></div> -->
+ 
+				<!--	<p class="subtitle">Notify Me When It's Ready</p>  -->
+
+					<!-- Newsletter form -->
+					<!-- <div id="newsletter" class="form-wrap">
+						<form action="subscribe.php" method="post" id="newsletter-form">
+							<p class="form-field">
+								<label for="newsletter_email" class="screen-reader-text">Please enter your email</label>
+								<input type="text" name="newsletter_email" id="newsletter_email" value="" placeholder="Your email" />
+							</p>
+							<p class="form-submit">
+								<input type="submit" name="newsletter_submit" id="newsletter_submit" value="Subscribe" />
+							</p>
+						</form>
+					</div>  -->
+
+					<!-- Social links -->
+					<div class="social">
+						<ul>
+							<li><a href="#" title="Facebook" class="icon icon-facebook"><span class="screen-reader-text">Facebook</span></a></li>
+							<li><a href="#" title="Twitter" class="icon icon-twitter"><span class="screen-reader-text">Twitter</span></a></li>
+							<li><a href="#" title="Google+" class="icon icon-googleplus"><span class="screen-reader-text">Google+</span></a></li>
+							<li><a href="#" title="Instagram" class="icon icon-instagram"><span class="screen-reader-text">Instagram</span></a></li>
+							<li><a href="#" title="Vimeo" class="icon icon-vimeo"><span class="screen-reader-text">Vimeo</span></a></li>
+						</ul>
+					</div>
+
+				</section>
+
+				<!-- Modal page toggle -->
+				<div class="modal-toggle">
+					<span class="modal-note">Plus d’informations</span>
+					<a href="#" id="modal-open" class="icon icon-plus"><span class="screen-reader-text">Open</span></a>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- Modal page: About Us -->
+		<div id="modal">
+			<div class="inner">
+
+				<!-- Modal toggle -->
+				<div class="modal-toggle">
+					<a href="#" id="modal-close" class="icon icon-cross"><span class="screen-reader-text">Close</span></a>
+				</div>
+
+				<!-- Content -->
+				<section class="content">
+					
+					<h1 class="section-title">Agence Urbaine de Skhirate Témara</h1>
+					
+					<!-- Columns -->
+					<div class="row">
+						<div class="one-half">
+							<h2><i class="icon icon-phone"></i>Notre téléphone</h2>
+							<p>Tél : +212 5 37 60 08 99<br />Fax : +212 5 37 60 99 52</p>
+							<h2><i class="icon icon-mail"></i>Notre E-mail</h2>
+							<p>contact@aust.gov.ma</p>
+						</div>
+						<div class="one-half">
+							
+							<h2><i class="icon icon-address"></i>Adresse</h2>
+							<p>Boulevard Moulay Ali Cherif Immeuble 462, TEMARA</p>
+						</div>
+					</div>
+
+				</section>
+
+			</div>
+		</div>
+
+	</div>
+
+	<!-- Background overlay -->
+	<div class="body-bg"></div>
+
+	<!-- Loading... -->
+	<div id="preload">
+		<div id="preload-content">
+			<div class="preload-spinner">
+				<span class="bounce1"></span>
+				<span class="bounce2"></span>
+				<span class="bounce3"></span>
+			</div>
+			<div class="preload-text">Loading...</div>
+		</div>
+	</div>
+
+	<!-- Included JS Files -->
+	<script type="text/javascript" src="{% set base_url = url('<front>')|render|split('/', -1)|join('/') %}/themes/gavias_castron/css/all/js/jquery-1.10.2.min.js"></script>
+	<script type="text/javascript" src="{% set base_url = url('<front>')|render|split('/', -1)|join('/') %}/themes/gavias_castron/css/all/js/plugins.js"></script>
+	<script type="text/javascript" src="{% set base_url = url('<front>')|render|split('/', -1)|join('/') %}/themes/gavias_castron/css/all/js/scripts.js"></script>
+</body>

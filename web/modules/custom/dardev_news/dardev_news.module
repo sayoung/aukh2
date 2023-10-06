@@ -1,0 +1,33 @@
+<?php
+/**
+ * @file
+ * Custom functions for Views Bootstrap.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\dardev_news\ViewsNews;
+use Drupal\views\ViewExecutable;
+/**
+ * Implements hook_theme().
+ */
+function dardev_news_theme() {
+  return ViewsNews::getThemeHooks();
+}
+
+
+
+function dardev_news_views_pre_render(ViewExecutable $view) {
+
+  if (isset($view) && ($view->style_plugin->definition['id'] == 'views_news_page')){
+    
+    $view->element['#attached']['library'][] = 'dardev_news/dardev_news';
+    }
+  
+}
+/*
+* Implements hook_preprocess_HOOK() for views_view_unformatted template.
+*/
+function dardev_news_preprocess(&$variables) {
+ $variables['lang'] = \Drupal::languageManager()->getCurrentLanguage()->getId();
+ $lang_code         = \Drupal::languageManager()->getCurrentLanguage()->getId();
+}

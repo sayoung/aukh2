@@ -1,0 +1,11 @@
+d8mail.admin_instruction:
+  title: 'AUKH'
+  description: 'Menu'
+  parent: system.admin
+  route_name: d8mail.admin_instruction
+  
+d8mail_aust.admin_instruction:
+  title: 'Paramètres les Pré-instruction '
+  description: 'Synchroniser les Pré-instruction'
+  parent: d8mail.admin_instruction
+  route_name: d8mail_aust.admin_instruction

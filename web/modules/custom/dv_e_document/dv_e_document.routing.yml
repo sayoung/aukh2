@@ -1,0 +1,22 @@
+document.parnet_document:
+  path: '/admin/agence/services/e-document'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'e-document'
+  requirements:
+    _permission: 'TRUE'
+document.admin_document:
+  path: '/admin/config/notification/list-mail'
+  defaults:
+    _form: '\Drupal\dv_e_document\Form\DocumentForm'
+    _title: 'list mail'
+  requirements:
+    _permission: 'administer site configuration'
+
+document.worflow_document:
+  path: '/admin/config/notification/workflow'
+  defaults:
+    _form: '\Drupal\dv_e_document\Form\WorkflowConfigForm'
+    _title: 'workflow mail'
+  requirements:
+    _permission: 'administer site configuration'

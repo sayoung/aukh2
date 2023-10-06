@@ -1,0 +1,141 @@
+<div class="gsc-accordion">
+    <div class="panel-group skin-white-border" id="accordion-8mwfn" role="tablist" aria-multiselectable="true">
+                
+				<div class="panel panel-default">
+                    <div class="panel-heading" role="tab">
+                        <h4 class="panel-title">
+							<a role="button" data-toggle="collapse" class="collapsed" data-parent="#accordion-8mwfn" href="#accordion-8mwfn-1" aria-expanded="true">
+								{% trans %}Agenda{% endtrans %}                            
+							</a>
+                        </h4>
+                    </div>
+                    <div id="accordion-8mwfn-1" class="panel-collapse collapse in " role="tabpanel" style="height: auto;">
+                           <div class="panel-body">
+								{% for node in nodes %}  
+									{% if node.bundle == "md_agenda" %}
+									{% set MM = node.field_date.value|date('U')|date("M") %}
+										<div class="row m-0" >
+    										<div class="col-md-2 py-10" >
+    											<span> 
+    												<strong>{{ node.field_date.value|date('U')|date("d") }}</strong> {{ MM|trans }} 
+    											</span>
+    										</div>
+    										<div class="col-md-10 p-agenda py-10" >
+    											{% set ttl = node.label|render|striptags|raw %} 
+													 <p> {% apply spaceless %}{{
+															ttl|length > 100 ? ttl|truncate(100, '...')|raw : ttl|raw }}
+													  {% endapply %}
+													 </p>
+    										</div>
+										</div>
+									{% endif %}
+								{% endfor %}
+								<a href="{{ url('<front>') }}/evenement" class="view-more" role="link">{% trans %} Plus d'évènement {% endtrans %}</a>
+                           </div>
+                    </div>
+                </div>
+				<div class="panel panel-default">
+                    <div class="panel-heading" role="tab">
+                        <h4 class="panel-title">
+							<a role="button" data-toggle="collapse" class="" data-parent="#accordion-8mwfn" href="#accordion-8mwfn-2" aria-expanded="true">
+								{% trans %}Appels d'offres{% endtrans %}                            
+							</a>
+                        </h4>
+                    </div>
+                    <div id="accordion-8mwfn-2" class="panel-collapse collapse" role="tabpanel" style="height: 0px;">
+                           <div class="panel-body">
+								{% for node in nodes %}  
+									{% if node.bundle == "appel_d_offre" %}
+									{% set MM = node.field_date_2.value|date('U')|date("M") %}
+									<div class="row m-0" >
+										<div class="col-md-2 py-10">
+											<span> 
+												<strong>{{ node.field_date_2.value|date('U')|date("d") }}</strong> {{ MM|trans }} 
+											</span>
+										</div>
+										<div class="col-md-10 p-agenda py-10">
+											          {% set ttl = node.label|render|striptags|raw %} 
+													 <p> {% apply spaceless %}{{
+															ttl|length > 100 ? ttl|truncate(100, '...')|raw : ttl|raw }}
+													  {% endapply %}
+													 </p>
+												
+										</div>
+									</div>
+									{% endif %}
+								{% endfor %}
+								<a href="{{ url('<front>') }}/avis-annonces/appel_a_doffres" class="view-more" role="link">{% trans %} Plus d'Appels d'Offres {% endtrans %}</a>
+                           </div>
+                    </div>
+                </div>                     
+				<div class="panel panel-default">
+                    <div class="panel-heading" role="tab">
+                        <h4 class="panel-title">
+							<a role="button" data-toggle="collapse" class="" data-parent="#accordion-8mwfn" href="#accordion-8mwfn-3" aria-expanded="true">
+								{% trans %}Appels à candidature{% endtrans %}                            
+							</a>
+                        </h4>
+                    </div>
+                    <div id="accordion-8mwfn-3" class="panel-collapse collapse" role="tabpanel" style="height: 0px;">
+                           <div class="panel-body">
+								{% for node in nodes %}  
+									{% if node.bundle == "appel_a_candidatures" %}
+									{% set MM = node.field_date_2.value|date('U')|date("M") %}
+									<div class="row m-0" >
+										<div class="col-md-2 py-10">
+											<span> 
+												<strong>{{ node.field_date_2.value|date('U')|date("d") }}</strong> {{ MM|trans }} 
+											</span>
+										</div>
+										<div class="col-md-10 p-agenda py-10">
+											{% set ttl = node.label|render|striptags|raw %} 
+													 <p> {% apply spaceless %}{{
+															ttl|length > 100 ? ttl|truncate(100, '...')|raw : ttl|raw }}
+													  {% endapply %}
+													 </p>
+										</div>
+									</div>
+									{% endif %}
+								{% endfor %}
+								<a href="{{ url('<front>') }}/avis-annonces" class="view-more" role="link">{% trans %} Plus d'Appels à condidature {% endtrans %}</a>
+                           </div>
+                    </div>
+                </div>
+				<div class="panel panel-default">
+                    <div class="panel-heading" role="tab">
+                        <h4 class="panel-title">
+							<a role="button" data-toggle="collapse" class="" data-parent="#accordion-8mwfn" href="#accordion-8mwfn-4" aria-expanded="true">
+								{% trans %}Enquête publique{% endtrans %}                            
+							</a>
+                        </h4>
+                    </div>
+                    <div id="accordion-8mwfn-4" class="panel-collapse collapse" role="tabpanel" style="height: 0px;">
+                           <div class="panel-body">
+								{% for node in nodes %}  
+									{% if node.bundle == "enquete_publique" %}
+									{% set MM = node.field_date_2.value|date('U')|date("M") %}
+									<div class="row m-0" >
+										<div class="col-md-2 py-10">
+											<span> 
+												<strong>{{ node.field_date_2.value|date('U')|date("d") }}</strong> {{ MM|trans }} 
+											</span>
+										</div>
+										<div class="col-md-10 p-agenda py-10">
+											{% set ttl = node.label|render|striptags|raw %} 
+													 <p> {% apply spaceless %}{{
+															ttl|length > 100 ? ttl|truncate(100, '...')|raw : ttl|raw }}
+													  {% endapply %}
+													 </p>
+										</div>
+									</div>
+									{% endif %}
+								{% endfor %}
+								<a href="{{ url('<front>') }}/avis-annonces" class="view-more" role="link">{% trans %} Plus d'enquête publique{% endtrans %}</a>
+                           </div>
+                    </div>
+                </div>				
+                                
+                                                      
+                 
+    </div>
+</div>

@@ -1,0 +1,238 @@
+<?php
+
+use Drupal\md_new_prestation\Helper\Helper;
+use Drupal\md_new_prestation\Eprestation\Eprestation;
+use Drupal\commerce_product\Entity\ProductInterface;
+
+use Drupal\commerce_product\Entity\ProductVariation;
+use Drupal\commerce_product\Entity\Product;
+use Drupal\commerce_price\Price;
+use Drupal\user\Entity\Role;
+use Drupal\user\Entity\User;
+use Drupal\user\RoleInterface;
+use Drupal\user\UserInterface;
+
+use Drupal\views\ViewExecutable;
+use Drupal\views\Plugin\views\query\QueryPluginBase; 
+/**
+ * Implements hook_ENTITY_TYPE_presave() for node entities.
+ *
+ */
+
+function md_new_prestation_commerce_product_presave(ProductInterface $product) {
+	$user = \Drupal\user\Entity\User::load(\Drupal::currentUser()->id());
+  switch ($product->bundle()) {
+    case 'instruction':
+        $isSMS = $product->get('field_is_sms')->getValue();
+		$phone_numbre = $product->get('field_telephone')->getValue();
+		$isFac = $product->get('field_facture')->getValue();
+		$isPaye = $product->get('field_is_payed')->getValue();
+		$isValiderRokhas = $product->get('field_valide_au_niveau_de_rokhas')->getValue();
+		$isAnnulation_du_dossier = $product->get('field_annulation_du_dossier')->getValue();
+		$isMail = $product->get('field_mail')->getValue();
+		$isValider = $product->get('field_valider')->getValue();
+		$isNdossier = $product->get('field_ndeg_de_dossier')->getValue();
+		//$isFacture = $product->get('field_la_facture')->getValue();
+		$isMetre = $product->get('field_metrage_du_projet')->getValue();
+		$isNature = $product->get('field_nature_du_projet')->getValue();
+		$isFacture = $product->get('field_la_facture')->target_id;
+		$alreadyvalider = $product->get('field_is_valider')->getValue();
+		$zone = $product->get('field_zone')->getValue();
+		$commnetaire = $product->get('field_commnetaire')->getValue();
+		$time_daba = date("d-m-Y H:i:s");
+
+         $to = '';
+		 
+        if(!$isSMS[0]['value'] && $product->get('field_telephone')->getValue() && $isMail[0]['value'] ){
+            
+			 $product->set('field_is_sms', 1);
+
+			//$product->set('field_valider', 1);
+			//Helper::sendSMSV($phone_numbre[0]['value']);
+			//Helper::sendMailVerification($isMail[0]['value'],"instruction");
+			//Helper::sendSMSF($phone_numbre[0]['value']);
+		//	Helper::sendMailFinalTechnicien($product->get('field_votre_e_mail')->getValue(), $product->get('field_code_de_suivi')->getValue(), 'Nouvelle demande de prestation');
+
+
+        }
+		if($isSMS[0]['value'] && ( !$alreadyvalider[0]['value'] && $isValider[0]['value'] && !$isAnnulation_du_dossier[0]['value'] )){
+            
+			//$product->set('field_is_sms', 1);
+			$product->set('field_is_valider', 1);
+			$product->set('field_valider', 1);
+			$product->set('field_date_de_validation', date('Y-m-d\TH:i:s', time()));
+			$product->set('field_validation_par', $user->get('name')->value);
+			
+			
+		/* $m2 = $isMetre[0]['value'];
+		$Nature_pro = $isNature[0]['value'];
+		if ( $zone[0]['value'] == "Zone Rurale"  ){
+			
+			if ($Nature_pro == "Morcellement" || $Nature_pro == "Morcellement fusion" || $Nature_pro == "Lotissement" ){
+		switch ($m2) {
+    case ($m2 <= 50000):
+	$price_d =  ($m2 * 0.3) * 1.2 ;
+        break;
+    case ($m2 <= 100000):
+	$price_d =  (($m2 * 0.2) + 5000 ) * 1.2 ;
+        break;
+	case ($m2 <= 200000):
+	$price_d =  (($m2 * 0.15) + 10000 ) * 1.2 ;
+        break;
+    case ($m2 > 200000):
+	$price_d =  (($m2 * 0.05) + 30000 ) * 1.2;
+        break;
+}
+		}else {
+			$price_d = $m2 * 3.6 ;
+		}
+		
+		}
+		else {
+			
+$price_d = $m2 * 3.6 ;
+		}
+			 
+
+			//$price_d = $isMetre[0]['value'] * 4 ; 
+			 $variatio_id = $product->get('variations')->getValue();
+			 $variatio_id_arr = array_values($variatio_id);
+			 $id_array_a = array_shift($variatio_id_arr);
+
+			  $f_id = $id_array_a['target_id'];
+
+			$variation = \Drupal\commerce_product\Entity\ProductVariation::load($f_id);
+			$variation->set('price', new \Drupal\commerce_price\Price(round($price_d, 2), 'MAD')); 
+            $variation->save();
+            $product->addVariation($variation); */
+
+           // $product->save();
+			//Helper::sendSMSF($phone_numbre[0]['value']);
+		//	Helper::sendMailFinalTechnicien($product->get('field_votre_e_mail')->getValue(), $product->get('field_code_de_suivi')->getValue(), 'Nouvelle demande de prestation');
+		
+		Helper::sendSMS($phone_numbre[0]['value'],$isNdossier[0]['value']);
+			Helper::sendMailValidation($isMail[0]['value'],$isNdossier[0]['value'],"instruction");
+		//	Helper::sendMailComptable($isMail[0]['value'],$isNdossier[0]['value'],"instruction");
+
+
+        } elseif ( $isSMS[0]['value'] && ( !$alreadyvalider[0]['value'] && $isAnnulation_du_dossier[0]['value'] ) ){
+			//$product->set('field_annulation_du_dossier', 1);
+			Helper::sendMailAnnulation($isMail[0]['value'],$isNdossier[0]['value'],$commnetaire[0]['value'],"instruction");
+			$product->set('field_data_annulation', date('Y-m-d\TH:i:s', time())); 
+			$product->set('field_annulation_par', $user->get('name')->value);
+			//Helper::sendSMSA($phone_numbre[0]['value'],$isNdossier[0]['value'],$commnetaire[0]['value']);
+		} else {
+			
+		}
+		 if($isPaye[0]['value'] && !$isFac[0]['value'] && $isFacture ) {
+			 
+			// $product->set('field_prix_en_lettre', $aaa);
+			 
+			//Helper::sendSMSF($phone_numbre[0]['value'],$isNdossier[0]['value']);
+			Helper::sendSMSF($phone_numbre[0]['value'],$isNdossier[0]['value']);
+			Helper::sendMailFacture($isMail[0]['value'],$isNdossier[0]['value'],"instruction");
+			$product->set('field_facture', 1);
+			$product->set('field_date_facturation', date('Y-m-d\TH:i:s', time()));
+			$product->set('field_facturation_par', $user->get('name')->value);
+			$sujet = "Paiement du dossier : '". $isNdossier[0]['value'] ."' validé";
+			Helper::sendtoadministration($isMail[0]['value'],$isNdossier[0]['value'],$sujet ,$isMetre[0]['value']);
+
+		 }
+		
+	 if($isPaye[0]['value']  && $isValiderRokhas[0]['value'] ) {
+			 
+			// $product->set('field_prix_en_lettre', $aaa);
+			 
+			//Helper::sendSMSF($phone_numbre[0]['value'],$isNdossier[0]['value']);
+			
+			$product->set('field_date_rokhas', date('Y-m-d\TH:i:s', time()));
+			$product->set('field_valide_rokhas_par', $user->get('name')->value);
+			
+
+		 }
+
+    break;
+  }
+}
+/**  
+ * Implements hook_mail().
+ */
+function md_new_prestation_mail($key, &$message, $params) {
+  $options = array(
+    'langcode' => $message['langcode'],
+  );
+
+  switch ($key) {
+    case 'node_insert':
+      $message['from'] = \Drupal::config('system.site')->get('mail');
+      $message['subject'] = t('@title', array('@title' => $params['node_title']), $options);
+      $message['body'][] = $params['message'];
+      break;
+  }
+}
+
+
+/*
+function md_new_prestation_views_query_alter(ViewExecutable $view, QueryPluginBase $query) {
+	
+	 if ($view->id() == 'suivi_de_la_pre_instruction') {
+    // Traverse through the 'where' part of the query.
+    foreach ($query->where as &$condition_group) {
+      foreach ($condition_group['conditions'] as &$condition) {	 
+           $filter_value = $view->exposed_raw_input['field_code_s_value'];
+			 $filter_value_1 = preg_replace('/%/', 'M', $filter_value);
+		   $condition = [
+             'field' => 'field_code_s_value',
+             'value' => $filter_value_1,
+             'operator' => '=',
+           ];
+         }
+      }
+   }
+      if ($view->id() == 'suivi_de_la_note') {
+    // Traverse through the 'where' part of the query.
+    foreach ($query->where as &$condition_group) {
+      foreach ($condition_group['conditions'] as &$condition) {	 
+           $filter_value = $view->exposed_raw_input['field_uuid_value'];
+			 $filter_value_1 = preg_replace('/%/', 'M', $filter_value);
+		   $condition = [
+             'field' => 'field_uuid_value',
+             'value' => $filter_value_1,
+             'operator' => '=',
+           ];
+         }
+      }
+   }
+          if ($view->id() == 'espace_telechargement') {
+    // Traverse through the 'where' part of the query.
+    foreach ($query->where as &$condition_group) {
+      foreach ($condition_group['conditions'] as &$condition) {	 
+           $filter_value = $view->exposed_raw_input['field_ndeg_de_dossier_value'];
+			 $filter_value_1 = preg_replace('/%/', 'M', $filter_value);
+		   $condition = [
+             'field' => 'field_ndeg_de_dossier_value',
+             'value' => $filter_value_1,
+             'operator' => '=',
+           ];
+         }
+      }
+   }
+   
+
+       if ($view->id() == 'telecharger_votre_e_note') {
+    // Traverse through the 'where' part of the query.
+    foreach ($query->where as &$condition_group) {
+      foreach ($condition_group['conditions'] as &$condition) {	 
+           $filter_value = $view->exposed_raw_input['field_uuid_value'];
+			 $filter_value_1 = preg_replace('/%/', 'M', $filter_value);
+		   $condition = [
+             'field' => 'field_uuid_value',
+             'value' => $filter_value_1,
+             'operator' => '=',
+           ];
+         }
+      }
+   }
+   
+}
+*/

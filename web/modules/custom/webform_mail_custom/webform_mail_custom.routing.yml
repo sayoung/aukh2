@@ -1,0 +1,21 @@
+webform_mail_custom_event:
+  path: '/admin/config/webformmailcustom/listmailevent'
+  defaults:
+    _form: '\Drupal\webform_mail_custom\Form\WebformMailConfigForm'
+    _title: 'list mail Event'
+  requirements:
+    _permission: 'administer site configuration'
+webform_mail_custom_candidature:
+  path: '/admin/config/webformmailcustom/listmailcandidature'
+  defaults:
+    _form: '\Drupal\webform_mail_custom\Form\WebformMailConfigFormCandidature'
+    _title: 'list mail Candidature'
+  requirements:
+    _permission: 'administer site configuration'
+webform_mail_custom_contact:
+  path: '/admin/config/webformmailcustom/listmailcontact'
+  defaults:
+    _form: '\Drupal\webform_mail_custom\Form\WebformMailConfigFormContact'
+    _title: 'list mail Contact'
+  requirements:
+    _permission: 'administer site configuration'

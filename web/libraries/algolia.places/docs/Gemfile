@@ -1,0 +1,14 @@
+# If you do not have OpenSSL installed, change
+# the following line to use 'http://'
+source 'https://rubygems.org'
+
+gem 'kramdown'
+gem 'kramdown-parser-gfm'
+
+# Middleman Gems
+gem 'middleman', '~> 4.4.0'
+gem 'middleman-livereload'
+gem 'middleman-minify-html'
+gem 'middleman-syntax'
+gem 'middleman-deploy', '~> 2.0.0-alpha'
+gem 'middleman-protect-emails'

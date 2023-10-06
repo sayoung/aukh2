@@ -1,0 +1,56 @@
+<div class="main-carte">
+        <div class="row">
+            <div class="col-sm-6 col-xs-12 carteView">      
+                   
+                     <span class="spanTooltips"></span>
+					 <span class="spanTooltipsright"></span>
+                    <svg id="Layer_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 638.48 614.26">
+<g id="Calque_2" data-name="Calque 2">
+<g id="Calque_1-2" data-name="Calque 1">
+                    
+    
+                             {% for key, value in content.field_chiffres_cles %} 
+                      {% set path_c = value['#paragraph'].field_path.getValue() %} 
+                      {% set title_c = value['#paragraph'].field_titre.getValue() %} 
+                       {% set description = value['#paragraph'].field_description_2 %} 
+                        {% if key >= '0' %}
+                        {% set cde = path_c.0.value %}
+                        {% set title = title_c.0.value %}
+                         {% set desc = description.0.value|render|striptags %}
+                        <path class="cls {% if key == '1'  %}cls_active {% endif  %}" data-toggle="tooltip" data-placement="bottom" title="{{ title|raw }}" alt="{{ desc|raw }}" d="{{ cde|raw }}"/>
+    
+                         
+                  {% endif %} {% endfor %}
+                            
+                           
+    
+                   </g></g></svg>
+                
+            </div> 
+		   
+		    <div class="col-sm-6  col-xs-12">
+		                             {% for key, value in content.field_chiffres_cles %} 
+                      {% set description = value['#paragraph'].field_description_2 %} 
+                      {% set title_c = value['#paragraph'].field_titre.getValue() %} 
+                      {% if key >= '0' %}
+                       {% set desc = description.0.value|render %}
+                       {% set title_1 = title_c.0.value %}
+                      
+							<div class="detail{{key+1}} detailCarte">
+                             <h2>{{title_1|raw}}</h2>
+                            <blockquote><p>{{ desc|raw }}</p></blockquote>
+                            
+                    </div>  
+						    {% endif %} {% endfor %}
+		       
+                        
+                              
+                        
+                    
+                              
+    
+
+
+            </div> 
+        </div>           	  
+   	</div>

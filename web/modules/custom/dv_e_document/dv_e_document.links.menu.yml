@@ -1,0 +1,17 @@
+document.parnet_document:
+  title: 'E-document'
+  description: 'Synchroniser les E-note'
+  parent: maps.services
+  route_name: document.parnet_document
+  
+document.admin_document:
+  title: 'E-document email'
+  description: 'E-document'
+  parent: document.parnet_document
+  route_name: document.admin_document
+  
+document.worflow_document:
+  title: 'E-document Workflow'
+  description: 'E-document'
+  parent: document.parnet_document
+  route_name: document.worflow_document

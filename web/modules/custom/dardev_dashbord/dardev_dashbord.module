@@ -1,0 +1,55 @@
+<?php
+
+/**
+ * @file
+ * Contains dardev_dashbord.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function dardev_dashbord_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the dardev_dashbord module.
+    case 'help.page.dardev_dashbord':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Description: actualites for homepage.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+
+/**
+ * Implements hook_theme().
+ */
+
+function dardev_dashbord_theme($existing, $type, $theme, $path)
+{
+  return array(
+      'theme_dashbord' => array(
+          'variables' => array('count_livre' => NULL,'count_annuler' => NULL,'nador_count' => NULL,'driouch_count' => NULL,'guercif_count' => NULL,'nador_count_a' => NULL,'driouch_count_a' => NULL,'guercif_count_a' => NULL,'cur_lang' => NULL,'from' => NULL,'to' => NULL,'average_livre' => NULL,'average_annuler' => NULL),
+          'template' => 'theme-dashbord'
+      ),
+      'theme_dashbord_rokhas' => array(
+        'variables' => array('count_livre' => NULL,'count_annuler' => NULL,'nador_count' => NULL,'driouch_count' => NULL,'guercif_count' => NULL,'nador_count_a' => NULL,'driouch_count_a' => NULL,'guercif_count_a' => NULL,'cur_lang' => NULL,'from' => NULL,'to' => NULL,'total_livre'=> NULL,'total_annuler'=> NULL),
+        'template' => 'theme-dashbord-rokhas'
+    ),
+    'theme_dashbord_document' => array(
+      'variables' => array('count_livre' => NULL,'count_annuler' => NULL,'nador_count' => NULL,'driouch_count' => NULL,'guercif_count' => NULL,'nador_count_a' => NULL,'driouch_count_a' => NULL,'guercif_count_a' => NULL,'cur_lang' => NULL,'from' => NULL,'to' => NULL,'total_livre'=> NULL,'total_annuler'=> NULL),
+      'template' => 'theme-dashbord-document'
+  ),
+  'theme_dashbord_preinstruction' => array(
+    'variables' => array('count_livre' => NULL,'nador_count' => NULL,'driouch_count' => NULL,'guercif_count' => NULL,'cur_lang' => NULL,'from' => NULL,'to' => NULL,'average_livre' => NULL),
+    'template' => 'theme-dashbord-preinstruction'
+),
+    'theme_statistic' => array(
+      'variables' => array('data' => []),
+      'template' => 'theme-statistic'
+    ),
+  );
+}

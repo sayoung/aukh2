@@ -1,0 +1,7 @@
+name: dardev_careers
+type: module
+description: 'News module developer par DARDEV.'
+package: DARDEV
+core_version_requirement: ^8.8.0 || ^9 || ^10
+dependencies:
+  - drupal:views

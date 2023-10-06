@@ -1,0 +1,90 @@
+{%
+  set classes = [
+    'node',
+    'node-detail',
+    'node--type-' ~ node.bundle|clean_class,
+    node.isPromoted() ? 'node--promoted',
+    node.isSticky() ? 'node--sticky',
+    not node.isPublished() ? 'node--unpublished',
+    view_mode ? 'node--view-mode-' ~ view_mode|clean_class,
+    'clearfix',
+  ]
+%}
+
+{% if view_mode == "teaser" %} 
+  
+  <div class="service-block grid">      
+    {% if node.field_service_icon.value %}
+      <div class="service-icon"><i class="{{ node.field_service_icon.value }}"></i></div>
+    {% endif %}  
+    <div class="service-content">
+       <div class="content-inner">
+          <h3 class="title"><a href="{{ url }}" rel="bookmark">{{ label }}</a></h3>
+          <div class="desc">{{ content.body }}</div>
+          <div class="readmore"><a class="btn-inline" href="{{ url }}">{{'Read more'|t}}</a></div>
+       </div>    
+    </div>
+  </div>
+
+{% elseif view_mode == "teaser_2" %}
+
+  <div class="service-block-2 grid">      
+    <div class="service-images lightGallery">{{ content.field_service_images }}</div>
+    <div class="service-content">
+       <div class="content-inner">
+          <div class="sp-info"><h3 class="title"><a href="{{ url }}" rel="bookmark">{{ label }}</a></h3></div>
+          <div class="sp-info"><div class="desc">{{ content.body }}</div></div>
+          <div class="sp-info"><span class="hidden">{{ node.field_service_icon.value }}</span></div>
+          <div class="readmore"><a class="btn-inline" href="{{ url }}">{{'Read more'|t}}</a></div>
+       </div>    
+    </div>
+  </div>
+
+{% elseif view_mode == "teaser_3" %}
+
+  <div class="service-block-3 grid">      
+    <div class="service-images lightGallery">{{ content.field_service_images }}</div>
+    <div class="service-content">
+       <div class="content-inner">
+          {% if node.field_service_icon.value %}
+            <div class="service-icon"><span class="icon"><i class="{{ node.field_service_icon.value }}"></i></span></div>
+          {% endif %}  
+          <h3 class="title"><a href="{{ url }}" rel="bookmark">{{ label }}</a></h3>
+          <div class="desc">{{ content.body }}</div>
+          <div class="readmore"><a class="btn-inline" href="{{ url }}">{{'Read more'|t}}</a></div>
+       </div>    
+    </div>
+  </div>
+
+{% else %}
+
+<article{{ attributes.addClass(classes) }}>
+  <div class="service-block-singe">
+    <div class="service-images-inner">
+      {{ content.field_service_images }}
+      {% if node.field_service_icon.value %}
+          <div class="service-icon"><span class="icon"><i class="{{ node.field_service_icon.value }}"></i></span></div>
+        {% endif %}
+    </div>
+    <div class="post-content">
+      {{ title_prefix }}
+         <h1{{ title_attributes.addClass('post-title') }}>{{ label }}</h1>
+      {{ title_suffix }}      
+
+      <div{{ content_attributes.addClass('node__content', 'clearfix') }}>
+        {{ content|without('field_service_images', 'field_service_icon', 'comment') }}
+      </div>
+      <div id="node-single-comment">
+        <div id="comments">
+          {{ content.comment }}
+        </div>  
+      </div>
+
+    </div>
+
+  </div>
+
+</article>
+
+<!-- End Display article for detail page -->
+{% endif %}

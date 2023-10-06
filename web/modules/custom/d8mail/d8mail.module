@@ -1,0 +1,79 @@
+<?php
+
+
+use Drupal\d8mail\Instruction\Instruction;
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Component\Utility\Html;
+use Drupal\Component\Utility\Unicode;
+use Drupal\Core\Mail\MailFormatHelper;
+use Drupal\Core\Site\Settings;
+use Drupal\KernelTests\KernelTestBase;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\node\NodeInterface; 
+/**
+ * Implements hook_entity_insert().
+ */
+function d8mail_entity_insert(Drupal\Core\Entity\EntityInterface $entity) {
+
+  if ($entity->getEntityTypeId() !== 'node' || ($entity->getEntityTypeId() === 'node' && $entity->bundle() !== 'pre_instruction')) {
+    return;
+  }
+
+
+  Instruction::sendMail($entity->get('field_email_')->value,$entity->get('field_uuid')->value, 'Instruction');
+  Instruction::sendSMS($entity->get('field_ndeg_tel')->value,$entity->get('field_uuid')->value );
+}
+function d8mail_entity_update(Drupal\Core\Entity\EntityInterface $entity) {
+ 
+ if ($entity->getEntityTypeId() !== 'node' || ($entity->getEntityTypeId() === 'node' && $entity->bundle() !== 'pre_instruction')) {
+    return;
+  }
+  if (($entity->get('moderation_state')->target_id ) === 'instruction_dispatcher') {
+	 /* if (file_create_url($entity->field_avis_de_la_l_agence_en_pdf->entity->getFileUri())){
+		  Instruction::sendMailFinal($entity->get('field_email_')->value, $entity->get('field_uuid')->value, 'Instruction',file_create_url($entity->field_avis_de_la_l_agence_en_pdf->entity->getFileUri()),$entity->get('field_avis_de_la_l_agence')->value);
+		  Instruction::sendMailFinalCCI($entity->get('field_email_')->value, $entity->get('field_uuid')->value, 'Instruction',file_create_url($entity->field_avis_de_la_l_agence_en_pdf->entity->getFileUri()),$entity->get('field_avis_de_la_l_agence')->value);
+	  }else {
+		  
+	  } */
+	  Instruction::sendMailFinalSansPDF($entity->get('field_email_')->value, $entity->get('field_uuid')->value, 'Instruction',$entity->get('field_avis_de_la_l_agence')->value);
+	Instruction::sendMailFinalSansPDFCCI($entity->get('field_email_')->value, $entity->get('field_uuid')->value, 'Instruction',$entity->get('field_avis_de_la_l_agence')->value);
+	
+	Instruction::sendSMSFinal($entity->get('field_ndeg_tel')->value,$entity->get('field_uuid')->value );
+
+}  
+  
+}
+function d8mail_node_presave(Drupal\node\NodeInterface $node) {
+if (($node->get('moderation_state')->target_id ) === 'instruction_traitement') {
+//	Instruction::sendMailFinal($entity->get('field_email_')->value, $entity->get('field_code_s')->value, 'Instruction');
+	$node->set('field_cheking', 0);
+}  
+}
+/**  
+ * Implements hook_mail().
+ */
+function d8mail_mail($key, &$message, $params) {
+  $options = array(
+    'langcode' => $message['langcode'],
+  );
+
+  switch ($key) {
+    case 'node_insert':
+      $message['from'] = \Drupal::config('system.site')->get('mail');
+      $message['subject'] = t('@title', array('@title' => $params['node_title']), $options);
+      $message['body'][] = $params['message'];
+      break;
+  }
+}
+
+/**
+ * Implements hook_mail_alter().
+ */
+function d8mail_mail_alter(&$message) {
+  switch ($message['key']) {
+    case 'node_insert':
+      $message['headers']['Content-Type'] = 'text/html; charset=UTF-8; format=flowed; delsp=yes';
+      break;
+  }
+}
+

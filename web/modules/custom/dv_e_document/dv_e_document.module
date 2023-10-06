@@ -1,0 +1,197 @@
+<?php
+
+/**
+ * @file
+ * Contains dv_e_document.module.
+ */
+require_once '/home/aukhtequality/public_html/vendor/autoload.php';
+//require_once 'D:\xampp\htdocs\aunador\vendor\autoload.php';
+//require __DIR__ . '/vendor/autoload.php';
+use Twilio\Rest\Client;
+
+use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Component\Utility\Html;
+use Drupal\dv_e_document\Helper\WorkflowEmail;
+use Drupal\dv_e_document\Helper\Helper;
+use Drupal\Component\Utility\Unicode;
+use Drupal\Core\Mail\MailFormatHelper;
+use Drupal\Core\Site\Settings;
+use Drupal\KernelTests\KernelTestBase;
+use Drupal\Core\Entity\EntityInterface;
+use Drupal\node\NodeInterface;
+use Drupal\commerce_product\Entity\ProductInterface;
+use Drupal\Core\Entity\EntityTypeInterface;
+use Drupal\dv_e_document\Controller\MainControllerWorflow; 
+
+
+
+
+
+/**
+ * Implements hook_entity_presave().
+ */
+
+
+
+
+
+
+/**
+ * Implements hook_entity_presave().
+ */
+ /*
+function dv_e_document_node_presave(NodeInterface $node) {
+  
+}
+*/
+/**
+ * Implements hook_help().
+ */
+function dv_e_document_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the dv_e_document module.
+    case 'help.page.dv_e_document':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('send an email programmatically After note creation') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+function dv_e_document_node_presave(Drupal\node\NodeInterface $node) {
+  if ($node->getEntityTypeId() !== 'node' || ($node->getEntityTypeId() === 'node' && $node->bundle() !== 'documents_urbanisme')) {
+     return;
+   }
+if (($node->get('moderation_state')->target_id ) === 'document_annuler' || ($node->get('moderation_state')->target_id ) === 'document_comptabilite' || ($node->get('moderation_state')->target_id ) === 'document_livree' || ($node->get('moderation_state')->target_id ) === 'document_paiement_annule' || ($node->get('moderation_state')->target_id ) === 'document_traitement' || ($node->get('moderation_state')->target_id ) === 'annulation' )  {
+$node->set('field_cheking', 0);
+}
+if (($node->get('moderation_state')->target_id ) === 'document_verificaton' )  {
+$node->set('field_cheking', 1);
+}
+
+
+$document_email = $node->get('field_email')->value;
+$document_command = $node->get('field_n_command')->value;
+$document_etape = $node->get('moderation_state')->target_id;
+$document_suivi = $node->get('field_uuid')->value;
+$document_nom = $node->get('field_nom')->value;
+$commune_id = $node->get('field_commune_doc')->value;
+// $provi = MainControllerWorflow::getProvinceById($commune_id);
+$provi = "Nador";
+$price = $node->get('field_prix_2')->value;
+$price = str_replace(" MAD","",$price);
+$node->set('field_prix_2',$price);
+if ($provi == "Province Nador") {
+  $provi = "Nador";
+} elseif ($provi == "Province Driouch") {
+  $provi = "Driouch";
+} elseif ($provi == "Province Guercif") {
+  $provi = "Guercif";
+}
+$node->set('field_parent',   $provi);
+$document_province = $node->get('field_parent')->value;
+//var_dump($document_province);
+//die;
+$document_phone = $node->get('field_telephone_')->value;
+
+ switch ($document_etape) {
+    case 'document_verificaton':
+      // WorkflowEmail::sendMailWorflow($document_email,$document_nom, $document_suivi,$document_command,$document_etape );
+      break;
+	case 'document_annuler':
+      // WorkflowEmail::sendMailWorflow($document_email,$document_nom, $document_suivi,$document_command,$document_etape );
+          break;
+    case 'document_comptabilite':
+      // WorkflowEmail::sendMailWorflow($document_email,$document_nom, $document_suivi,$document_command,$document_etape );
+          break;
+	case 'document_livree':
+      // WorkflowEmail::sendMailWorflow($document_email,$document_nom, $document_suivi,$document_command,$document_etape );
+          break;
+	case 'document_paiement_annule':
+      // WorkflowEmail::sendMailWorflow($document_email,$document_nom, $document_suivi,$document_command,$document_etape );
+          break;
+	case 'document_traitement':
+      // WorkflowEmail::sendMailWorflow($document_email,$document_nom, $document_suivi,$document_command,$document_etape );
+          break;
+	case 'annulation':
+      // WorkflowEmail::sendMailWorflow($document_email,$document_nom, $document_suivi,$document_command,$document_etape );
+          break;
+  }
+
+ // $node->set('field_cheking', 0);
+}
+
+function dv_e_document_entity_update(Drupal\Core\Entity\EntityInterface $entity) {
+  if ($entity->getEntityTypeId() !== 'node' || ($entity->getEntityTypeId() === 'node' && $entity->bundle() !== 'documents_urbanisme')) {
+     return;
+   }
+$document_email = $entity->get('field_email')->value;
+$document_command = $entity->get('field_n_command')->value;
+$document_etape = $entity->get('moderation_state')->target_id;
+$document_suivi =  $entity->get('field_uuid')->value;
+$document_nom = $entity->get('field_nom')->value;
+
+   if (($entity->get('moderation_state')->target_id ) === 'document_livree' )  {
+   $document_uri =  file_create_url($entity->field_e_document->entity->getFileUri());
+    Helper::sendMailFinal($document_email, $document_suivi,$document_uri,$document_nom ,$document_command );
+      
+      }
+   
+  
+  }
+function dv_e_document_form_node_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id){
+   $user = \Drupal::currentUser();
+   $uid = \Drupal::currentUser()->id();
+   $roles = $user->getRoles();
+  // $node = \Drupal\node\NodeInterface;
+   $node = $form_state->getFormObject()->getEntity();
+   
+   if  (($node->get('moderation_state')->target_id ) === 'document_traitement' || ($node->get('moderation_state')->target_id ) === 'document_livree' )  {
+	$form['field_e_document']['widget'][0]['#required'] = TRUE;
+    }
+}
+  
+  
+  function dv_e_document_entity_insert(Drupal\Core\Entity\EntityInterface $entity) {
+
+  if ($entity->getEntityTypeId() !== 'node' || ($entity->getEntityTypeId() === 'node' && $entity->bundle() !== 'documents_urbanisme')) {
+     return;
+   }
+if (($entity->get('moderation_state')->target_id ) === 'document_verificaton' )  {
+$entity->set('field_cheking', 1);
+}
+
+$document_email = $entity->get('field_email')->value;
+$document_command = $entity->get('field_n_command')->value;
+$document_etape = $entity->get('moderation_state')->target_id;
+$document_suivi = $entity->get('field_uuid')->value;
+$document_nom = $entity->get('field_nom')->value;
+$commune_id = $entity->get('field_commune_doc')->value;
+//$provi = MainControllerWorflow::getProvinceById($commune_id);
+$provi = "Nador";
+$price = $entity->get('field_prix_2')->value;
+$price = str_replace(" MAD","",$price);
+$entity->set('field_prix_2',$price);
+if ($provi == "Province Nador") {
+  $provi = "Nador";
+} elseif ($provi == "Province Driouch") {
+  $provi = "Driouch";
+} elseif ($provi == "Province Guercif") {
+  $provi = "Guercif";
+}
+$entity->set('field_parent',   $provi);
+$document_province = $entity->get('field_parent')->value;
+//var_dump($document_province);
+//die;
+$document_phone = $entity->get('field_telephone_')->value;
+// WorkflowEmail::sendMailWorflow($document_email,$document_nom, $document_suivi,$document_command,$document_etape );
+ switch ($document_etape) {
+    case 'document_verificaton':
+       // exit;
+      // WorkflowEmail::sendMailWorflow($document_email,$document_nom, $document_suivi,$document_command,$document_etape );
+      break;
+ }
+
+}

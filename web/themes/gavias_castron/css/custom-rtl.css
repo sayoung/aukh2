@@ -1,0 +1,532 @@
+/*******************************************************************************
+/*# sourceMappingURL=bootstrap-rtl.css.map */
+@import url('https://fonts.googleapis.com/css?family=Cairo&display=swap');
+body {
+	color:#0a1312;
+	text-align:right;
+	font-size: 17px;
+}
+ #views-exposed-form-suivi-de-la-note-page-1 .form-item-field-uuid-value , #views-exposed-form-suivi-e-prestation-page-1 .form-item-field-code-de-suivi-value{
+    float: right;
+	padding-left: 8px;
+}
+#views-exposed-form-e-prestation-demn-page-1 > div {
+	width: 100%;
+}
+[dir="rtl"] #block-views-block-slider-block-1 .views-field-title {
+	text-align:right;
+    left: unset;
+    right: 70px;
+	margin-right:unset;
+}
+[dir="rtl"] #block-views-block-slider-block-1 .views-field-field-sous-titre {
+	text-align:right;
+    left: unset;
+    right: 70px;
+}
+.interne:lang(ar) {
+    position: fixed;
+    top: 0px;
+    background-color: rgba(51, 51, 51, 0.28);
+    z-index: 3333;
+    opacity: 0.8;
+    left: 25px;
+    height: 32px;
+    width: 171px;
+}
+.inf-note .btn {
+    margin-right: 15px;
+	background: #dbbe72;
+}
+#edit-submit-e-prestation {
+    right: 0;
+    left:unset;
+}
+#block-menuducomptedelutilisateur {
+    position: absolute;
+    right: 109px !important;
+    top: 3px !important;
+    margin-top: 0 !important;
+}
+#views-exposed-form-search-page-1 .js-form-item-langcode {
+	width: 100%;
+} 
+#views-exposed-form-search-page-1 .form-item-combine {
+	width: 100%;
+} 
+.views-view-grid .views-col {
+    float: right;
+}
+.e-services-menu > ul > li > ul {
+    right: -100% !important;
+    width: 190px !important;
+	left:unset;
+    margin-left: unset;
+	margin-right: 0;
+}
+header.header-v1 .header-main-inner .branding {
+    width: 240px;
+    float: right;
+}
+header.header-v3 .header-main-inner .branding {
+    width: 240px;
+    float: right;
+}
+header.header-v1 .header-main-inner .header-inner {
+padding-left: 60px;
+padding-right: 60px;
+    float: left;
+}
+header.header-v3 .header-main-inner .header-inner {
+padding-left: 60px;
+padding-right: 60px;
+    float: left;
+} 
+header.header-v1 .site-branding-logo img {
+    margin-left: 0;
+    margin-right: 25px;
+}
+.breadcrumb  li {
+	float:right;
+}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    text-align: right;
+	color: #057d62;
+	padding-right:0px;
+}
+img.imgserint {
+    margin-left: 0;
+    margin-right: 22%;
+}
+.app_inner__tab .tab_left {
+    width: 30%;
+    float: right;
+    position: relative;
+}
+.app_inner__tab h2 {
+    right: 30%;
+    left: 0;
+}
+#views-exposed-form-programme-des-commission-page-2 > div ,#views-exposed-form-programme-des-commission-page-1 > div  {
+width:100%;
+}
+#views-exposed-form-e-prestation-page-1  > div  {
+width:100%;
+}
+.desc_ImageOverlay h3 { 
+right: 0;
+left:unset;
+}
+.views-exposed-form .form-item {
+    padding-bottom: 25px !important;
+    float: right;
+	width: 45%;
+}
+.js-form-wrapper legend, .js-form-wrapper label, .views-exposed-form label ,.views-exposed-form .form-item-field-uuid-value label{
+    width: 30% !important; 
+    float: right !important;
+}
+.copyright #block-pageurlqrcode {
+    right: 47% !important;
+}
+.gsc-accordion .panel-group.skin-white-border .panel .panel-title a::after {
+  left: 0;
+  right: unset;
+}
+.dropdown {
+    position: relative;
+    display: inline-block;
+    top: 0;
+    right: 12px !important;
+}
+#webform-submission-e-note-add-form .col-md-offset-3 {
+    margin-right: 0;
+}
+#webform-submission-e-note-add-form .js-form-wrapper .fieldset-wrapper, #webform-submission-e-note-add-form .js-form-wrapper input, #webform-submission-e-note-add-form .views-exposed-form .form-select, #webform-submission-e-note-add-form .views-exposed-form input {
+    width: 60% !important;
+    float: right !important;
+}
+#webform-submission-e-note-add-form .het-for select {
+    width: 60% !important;
+    float: right;
+}
+a.hover-ser , a.hover-servi {
+	display: inline-block;
+}
+.navigation .gva_menu li a {
+    text-align: right !important;
+}
+.navigation .gva_menu .sub-menu {
+right: 0;}
+.navigation .gva_menu .sub-menu > li:hover > ul {
+	right: 100%;
+}
+#aust-newsletter--2 > div {
+    float: right;
+    padding-right: 25px;
+}
+#block-austnewsletterblock-2 .block-title {
+    float: right;
+	margin-right: 20%;
+	margin-left: unset;
+}
+.gva-search-region {
+    left: 55px;
+    top: 50%;
+	right:unset;
+}
+.gva-search-region .search-content {
+	left: 0;
+	right:unset;
+}
+.navigation .gva_menu > li > a {
+	font-size: 14px;
+	font-family: "Cairo", sans-serif;
+}
+
+.detailCarte h2 {font-family: "Cairo", sans-serif;}
+.gsc-icon-box-new.style-4 .content-inner .title {
+	font-family: "Cairo", sans-serif;
+	font-size: 15px;
+}
+.gsc-icon-box-new.style-4.text-light .content-inner .desc {
+    color: #fff;
+	font-size: 15px;
+}
+.block .block-title {font-family: "Cairo", sans-serif;}
+.gsc-button.extra-large {float:left;padding: unset;}
+.gsc-icon-box-new.style-4 .content-inner .title {
+letter-spacing: 0;
+}
+.gsc-heading .sub-title {
+	letter-spacing: 0;
+}
+.gsc-button {
+	letter-spacing: 0;	
+}
+.breadcrumb-content-inner .gva-breadcrumb-content .breadcrumb-links nav.breadcrumb li {
+	font-size: 18px;
+}
+.gsc-heading.align-left-2 .heading-top {
+    width: 65%;
+    float: right;
+    position: relative;
+    padding-left: 15px;
+}
+.gsc-heading.style-4 .heading-top {
+  width: 65%;
+  float: right;
+  position: relative;
+}
+.tt-actualites {
+    float: left;
+    margin-left: 117px;
+    text-align: start;
+    color: #000;
+} 
+.our-gal-1 .services-1 .owl-carousel .owl-dots {
+    margin-top: 20px;
+    text-align: right;
+    float: right;
+    width: 100%;
+    position: absolute;
+    bottom: 10px;
+    right: 30px;
+}
+.readmore-plus {
+	right: unset;
+    left: 30px;
+    background: #fff;
+    padding: 0px 5px;
+    color: #839b77;
+    font-size: 30px;
+    line-height: 1;
+    border-radius: 25px;
+    height: 40px;
+    text-align: center;
+    width: 40px;
+}
+.gsc-heading.align-left-2 .heading-top::after {
+
+    content: '';
+    width: 2px;
+    height: 100%;
+    background: #008AFA;
+    position: absolute;
+    top: 0;
+    right: -20px;
+    z-index: 1;
+    left: unset;
+
+}
+#section4  .heading-top { 
+    padding-top: 0px;
+    padding-bottom: 0px;
+
+}
+#section4 .head-media .heading-top {
+    height: 43px;
+	min-height: 43px; 
+	/* margin-left: 8.3333%; */
+	margin-right: 8.3333%;
+}
+#section3 .heading-top { 
+    padding-top: 0px;
+    padding-bottom: 0px;
+	left: unset; 
+	right: 8.3333%;
+}
+.cnt-lefy {
+    position: absolute;
+	left: unset; 
+    right: 8.3333%;
+}
+
+.flex-title {
+	height: unset;
+	top: 80%;
+	bottom: unset;
+	text-align: right;
+	width: 326px;
+	left: 0;
+}
+.flex-slide:hover .flex-title {
+    text-align: center;
+    display: inline-table !important;
+    transform: rotate(360deg) !important;
+    bottom: unset;
+    width: 100%;
+    top: 30%;
+}
+.clt-media-head {
+    top: unset;
+}
+
+.aust-agenda1 {
+    top: unset;
+
+}
+blockquote {
+    padding: 12.5px 25px;
+    margin: 0 0 25px;
+    font-size: 17.5px;
+    border-left: unset;
+    border-right: 5px solid #eeeeee;
+}
+#menuFooterGreen .gsc-image {
+    width: 40%;
+    float: right;
+    height: 120px;
+}
+#block-pageurlqrcode--2 {
+	float: left;
+}
+#qr-code-id>div  {
+	width: 130px;
+	left:1%;
+}
+.block .block-title::after {
+    right: 0;
+    left: unset;
+}
+.aust-agenda1 .widget.gsc-block-drupal.title-align-left .block-title {
+    text-align: right;
+}
+#webform-submission-e-note-add-form #edit-actions {
+    margin-right: 27%;
+    width: 60%;
+    float: right;
+}
+.footer-second .footermap-col > ul > li {
+    float: right;
+}
+.footer-center ul li i {
+	transform: rotate(180deg);
+}
+#views-exposed-form-vente-des-documents-page-1 > div {
+    width: 70%;
+    float: right;
+}
+#views-exposed-form-vente-des-documents-page-1 .form-actions {
+    width: 30%;
+    float: left;
+}
+.navigation .gva_menu > li > a {
+	letter-spacing: 0;
+	font-family: "Cairo", sans-serif;
+
+}
+.detailCarte blockquote {
+
+    border-right: 2px solid rgba(0,0,0,0.075);
+	border-left: 0px solid rgba(0,0,0,0);
+
+}
+.imahechifre div {
+	padding-right:2px;
+}
+[class*="block-grid-"] > div {
+    float: right;
+}
+#aust-newsletter--2 input#edit-submit--2 {
+	margin-right: 15px;
+}
+.btn-inline::after {
+
+    content: '\f060';
+    font-family: "FontAwesome";
+    position: absolute;
+    top: 7px;
+right: 52px; }
+.btn-inline { 
+padding-right:0;
+}
+@media only screen and (max-width: 1680px) {
+.flex-title {
+	height: unset;
+	top: 80%;
+	bottom: unset;
+	text-align: right;
+	width: 220px;
+}
+}
+@media only screen and (max-width: 1440px) {
+img.imgserint {
+    margin-left: 0;
+    margin-right: 15%;
+}
+.flex-title {
+	height: unset;
+	top: 80%;
+	bottom: unset;
+	text-align: right;
+	width: 200px;
+}
+}
+@media screen and (max-width: 1366px) {
+img.imgserint {
+    margin-left: 0;
+    margin-right: 10%;
+}
+.flex-title {
+	height: unset;
+	top: 80%;
+	bottom: unset;
+	text-align: right;
+	width: 180px;
+}
+}
+
+
+@media screen and (max-width: 768px) {
+	.flex-title {
+    bottom: 0;
+    width: 100%;
+    height: unset;
+    top: 30px;
+    text-align: center;
+}
+#block-austnewsletterblock-2 .block-title {
+    float: right;
+    margin-right: unset;
+    margin-left: unset;
+}
+#block-views-block-slider-block-1 .views-field-field-photo- {
+    position: relative;
+    height: unset;
+    width: 100vw;
+}
+.copyright #block-pageurlqrcode {
+    right: 650px !important;
+    display: none;
+}
+.header-main > div > div > div {width:100%;}
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    text-align: justify;
+}
+.content-full > .container-bg > .content-main-inner > .row {
+    width: 100%;
+    margin-right: 0;
+}
+#block-gaviascontentbuilderserviceinterne .container {
+
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 0;
+    padding-right: 0;
+
+}
+ .flex-slide:hover .flex-title {
+    transform: rotate(0deg) !important;
+  }
+  .services-1 .owl-carousel .service-content {
+    text-align: right;
+}
+}
+@media screen and (max-width: 414px) {
+.services-1 .owl-carousel .service-content {
+    text-align: right;
+}
+#aust-newsletter--2 > div {
+    float: right;
+    padding-right: unset;
+    width: 70%;
+    padding-bottom: 25px;
+}
+#aust-newsletter--2 input#edit-submit--2 {
+	padding: 5px 10px;
+}
+#block-austnewsletterblock-2 .block-title {
+    float: right;
+    margin-right: unset;
+    margin-left: unset; 
+}
+}
+.moderation li + li::after {
+	left:unset;
+    right: -100%;
+}
+.moderation li {
+    position: relative;
+    float: right;
+    width: 16%;
+    text-align: right;
+    color: #057d62;
+}
+.moderation li::before {
+	margin-right: -18px;
+	margin-left: unset;
+}
+.services-1 .owl-carousel .owl-stage-outer {
+	display: -webkit-inline-box;
+}
+.text-light .title {
+    color: #fff !important;
+    z-index: 1;
+}
+.desc-first-block {
+    top: unset;
+    left: unset;
+    right: 8.33333%;
+    order: 3;
+
+}
+.desc-second-block {
+	top: unset;
+	left:unset;
+    order: 1;
+}
+.order-2 {
+	order:2;
+}
+#Layer_1 {
+    margin: 0 18% 0 0% !important;
+}
+#aust-newsletter > div {
+    float: right;
+    padding-right: 10px;
+}
+.iconOr_1 {
+    text-align: right !important;
+    margin-right: 30px;
+}

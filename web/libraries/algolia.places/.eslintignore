@@ -1,0 +1,7 @@
+dist/
+docs/build/
+docs/vendor/
+test/npm-lib/
+test/npm-autocomplete/
+test/npm-widget/
+.eslintrc.js

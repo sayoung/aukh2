@@ -1,0 +1,12 @@
+
+document.admin_document:
+  title: 'E-document'
+  description: 'Synchroniser les E-prestation AUST'
+  parent: maps.admin_maps
+  route_name: document.admin_document
+
+document.worflow_document:
+  title: 'E-document workflow'
+  description: 'Synchroniser les E-prestation AUST'
+  parent: maps.admin_maps
+  route_name: document.worflow_document

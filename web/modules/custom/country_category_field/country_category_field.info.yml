@@ -1,0 +1,7 @@
+name: 'country, category Field'
+type: module
+description: 'The country, category field.'
+package: 'leyton_feilds'
+core_version_requirement: ^8.8 || ^9
+
+

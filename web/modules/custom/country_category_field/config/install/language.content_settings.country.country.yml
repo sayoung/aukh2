@@ -1,0 +1,15 @@
+langcode: en
+status: true
+dependencies:
+  module:
+    - country_category_field
+third_party_settings:
+  content_translation:
+    enabled: false
+    bundle_settings:
+      untranslatable_fields_hide: '1'
+id: country.country
+target_entity_type_id: country
+target_bundle: country
+default_langcode: en
+language_alterable: false

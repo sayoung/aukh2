@@ -1,0 +1,66 @@
+{{ data.form }}
+
+{% if data.date1 is not empty and data.date2 is not empty and data.type is not empty %}
+  <div class=" layout-column-f">
+    <div class="clearfix">
+
+      <div class="container" id="tab">
+
+        <div class="row">
+          {% if from == years %}
+            <h2>Période de recherche : Du
+              <span class="date_note"> {{ data.date1 }} </span> au
+              <span class="date_note"> {{ data.date2 }}</span></h2>
+          {% endif %}
+        </div>
+
+        <div class="row">
+          <div class="field field--name-title-text field--type-string ">
+            {% if data.dataform == 'enote' %}
+            <h3> Les notes {{ data.type == 'Dispatcheur' ? 'Traité' : 'Archivé' }} </h3>
+            {% elseif data.dataform == 'rokhas' %}
+              <h3> Rokhas {{ data.type == 'field_valider' ? 'Validé' : 'Annulé' }} </h3>
+            {% endif %}
+          </div>
+        </div>
+
+        <div class="row text-center ">
+
+          <div class="col">
+
+            <div class="counter_nru">
+              <h2 class="timer count-title count-number">  {{ data.data_avg.count }}  </h2>
+              {% if data.dataform == 'enote' %}
+                <p class="count-text ">Nombre de notes {{ data.type == 'Dispatcheur' ? 'Traité' : 'Archivé' }}</p>
+              {% elseif data.dataform == 'rokhas' %}
+                <p class="count-text ">Nombre de notes {{ data.type == 'field_valider' ? 'Validé' : 'Annulé' }}</p>
+              {% endif %}
+
+            </div>
+
+          </div>
+
+          <div class="col">
+
+            <div class="counter_nru">
+              <h2 class="timer count-title count-number">  {{ data.data_avg.avg }}  </h2>
+              {% if data.dataform == 'enote' %}
+              <p class="count-text ">temps moyen de {{ data.type == 'Dispatcheur' ? 'traitement' : 'd’annulation' }}</p>
+              {% elseif data.dataform == 'rokhas' %}
+                <p class="count-text ">temps moyen de {{ data.type == 'field_valider' ? 'validation' : 'd’annulation' }}</p>
+              {% endif %}
+            </div>
+
+          </div>
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+  <div style="width: 50%; margin: 0 auto;">
+    <canvas id="myChart"></canvas>
+  </div>
+{% endif %}

@@ -1,0 +1,5 @@
+enote.admin:
+  title: 'Paramètres E-note '
+  description: 'Synchroniser les E-prestation AUKH'
+  parent: d8mail.admin_instruction
+  route_name: notemail.admin_smsemail

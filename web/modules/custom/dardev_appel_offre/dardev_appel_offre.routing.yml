@@ -1,0 +1,49 @@
+dardev_appel_offre.backoffice:
+  path: '/admin/agence/services/appel-offre'
+  defaults:
+    _controller: '\Drupal\system\Controller\SystemController::systemAdminMenuBlockPage'
+    _title: 'Appel offre'
+  requirements:
+    _permission: 'TRUE'
+    
+dardev_appel_offre.ldardev_appel_offre_controller_display:
+  path: '/admin/config/dardev_appel_offre'
+  defaults:
+    _controller: '\Drupal\dardev_appel_offre\Controller\AppelOffreController::display'
+    _title: 'display'
+  requirements:
+    _permission: 'access content'
+
+dardev_appel_offre.display_table_controller_display:
+  path: '/admin/config/dardev_appel_offre/list'
+  defaults:
+    _controller: '\Drupal\dardev_appel_offre\Controller\DisplayTableController::display'
+    _title: 'display'
+  requirements:
+    _permission: 'access content'
+
+dardev_appel_offre.delete_form:
+  path: '/admin/dardev_appel_offre/form/delete/{cid}'
+  defaults:
+    _form: '\Drupal\dardev_appel_offre\Form\DeleteForm'
+    _title: 'DeleteForm'
+  requirements:
+    _access: 'TRUE'
+
+dardev_appel_offre.admin_synchroniser:
+  path: '/admin/config/dardev_appel_offre/actualisation'
+  defaults:
+    _form: '\Drupal\dardev_appel_offre\Form\AppelOffreConfigForm'
+    _title: 'Newsletter'
+  requirements:
+    _permission: 'administer site configuration'
+
+modal_form_send.open_modal_form:
+  path: '/admin/config/modal_form_send'
+  defaults:
+    _title: 'Send Newsletter'
+    _controller: '\Drupal\dardev_appel_offre\Newsletter\Newsletter::openModalForm'
+  requirements:
+    _permission: 'administer site configuration'
+  options:
+    _admin_route: TRUE

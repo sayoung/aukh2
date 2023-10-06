@@ -1,0 +1,5 @@
+name: Appel offre
+type: module
+description: Gestion des appel d offres.
+core_version_requirement: ^8.8.0 || ^9 || ^10
+package: DARDEV

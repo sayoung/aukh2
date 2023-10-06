@@ -1,0 +1,4 @@
+services:
+  dardev_dashbord.utils_provider:
+    class: Drupal\dardev_dashbord\UtilsProvider
+    #arguments: ['@current_user']

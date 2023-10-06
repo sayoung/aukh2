@@ -1,0 +1,27 @@
+<?php
+
+function dardev_appel_offre_schema() {
+  $schema['dardev_appel_offre_emails'] = array(
+    'fields' => array(
+      'id'=>array(
+        'type'=>'serial',
+        'not null' => TRUE,
+      ),
+      'email'=>array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+      ),
+      'id_offre'=>array(
+        'type'=>'int',
+        '#title' =>('Id appel'),
+      ),
+      'offre'=>array(
+        'type'=>'varchar',
+        'length' => 800,
+      ),
+    ),
+    'primary key' => array('id'),
+  );
+  return $schema;
+}

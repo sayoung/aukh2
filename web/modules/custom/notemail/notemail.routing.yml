@@ -1,0 +1,7 @@
+notemail.admin_smsemail:
+  path: '/admin/config/notemail/smsemail'
+  defaults:
+    _form: '\Drupal\notemail\Form\NotemailConfigForm'
+    _title: 'Config SMS E-mail'
+  requirements:
+    _permission: 'administer site configuration'

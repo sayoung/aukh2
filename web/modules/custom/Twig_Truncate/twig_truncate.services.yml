@@ -1,0 +1,6 @@
+services:
+  twig_truncate.twig_extension:
+    arguments: ['@renderer']
+    class: Drupal\twig_truncate\TwigExtension\Truncate
+    tags:
+      - { name: twig.extension }

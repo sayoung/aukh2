@@ -1,0 +1,357 @@
+.portfolio-filter{
+  margin-bottom: 15px;
+  ul.nav-tabs{
+    display: inline-block;
+    padding: 5px 0;
+    > li{
+      > a{
+        background: none;
+        font-weight: 600;
+        background: transparent;
+        color: $black;
+        margin-right: 10px;
+        padding: 6px 15px;
+        @include transition(all 0.35s);
+        text-transform: uppercase;
+        letter-spacing: 0;
+        position: relative;
+        border-top: 1px solid $border-color;
+        border-bottom: 1px solid $border-color;
+        border-left: none;
+        border-right: none;
+        @include transition(all 0.35s);
+        font-family: $font-second;
+        @media(max-width: $screen-sm-max){
+          border: none;
+          margin-right: 0;
+          padding: 4px 10px;
+        }
+        &:hover{
+          border-color: $theme-color;
+        }
+        &.active{
+          border-color: $theme-color;
+          background: $theme-color;
+          @include border-radius(6px);
+          color: $white;
+        }
+      }
+      &.uk-active{
+        a{
+          border-color: $theme-color;
+          background: $theme-color;
+          @include border-radius(6px);
+          color: $white;
+        }
+      }
+    }
+  }
+}
+
+.gva-portfolio-items{
+  float: left;
+  width: 100%;
+}
+
+.uk-slideset-init{
+  @media(max-width: $screen-xs-max){
+    .portfolio-filter{
+      margin-bottom: 35px;
+    }
+    .uk-slideset-nav{
+      top: 44px;
+    }
+  }
+}
+
+.portfolio-v1{
+  position: relative;
+  max-width: 500px;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  background: none;
+  .portfolio-content{
+    @include box-shadow(0 10px 30px transparent);
+    position: relative;
+    @include transition(box-shadow 0.3s ease);
+  }
+  .images{
+    position: relative;
+    text-align: center;
+    .item-image a{
+      display: block;
+      &:after{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        @include size(100%, 100%); 
+        background: $black;
+        @include opacity(0);
+        @include scale(0.96);
+        z-index: 1;
+        @include transition(all 0.35s);
+      }
+    }
+    .image-item{
+      .picon-expand{
+        @include opacity(0);
+        @include size(32px, 32px);
+        background: $white;
+        line-height: 32px;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        z-index: 99;
+        text-align: center;
+        @include transition(all 0.35s);
+        margin-top: 30px;
+        &:hover{
+          color: $white;
+          background: $theme-color;
+        }
+      }
+    }
+    .link{
+      @include opacity(0);
+      @include transition(all 0.45s);
+      @include size(32px, 32px);
+      background: $white;
+      line-height: 33px;
+      position: absolute;
+      top: 55px;
+      right: 15px;
+      z-index: 99;
+      text-align: center;
+      margin-top: 45px;
+      &:hover{
+        color: $white;
+        background: $theme-color;
+      }
+    }
+  }
+  .content-inner{
+    position: absolute;
+    @include size(100%, auto);
+    left: 0;
+    bottom: 0;
+    z-index: 11;
+    text-align: left;
+    @include transition(all 0.35s);
+    padding: 25px;
+    background : linear-gradient(to top, rgba(0, 0, 0, 0.69), rgba(0, 0, 0, 0));
+    background : -webkit-linear-gradient(to top, rgba(0, 0, 0, 0.69), rgba(0, 0, 0, 0));
+    background : -o-linear-gradient(to top, rgba(0, 0, 0, 0.69), rgba(0, 0, 0, 0));
+    background : -moz-linear-gradient(to top, rgba(0, 0, 0, 0.69), rgba(0, 0, 0, 0));
+    @media(max-width: $screen-sm-max){
+      padding: 25px 15px;
+    }
+    .title{  
+      @include transition(all 0.35s);
+      margin-bottom: 5px;
+      a{
+        display: block;
+        font-size: 18px;
+        color: $white;
+        font-weight: 600;
+        line-height: 22px;
+        font-family: $font-second;
+        @media(max-width: $screen-sm-max){
+          font-size: 16px;
+        }
+        &:hover, &:focus, &:active{
+          text-decoration: underline;
+        }
+      }
+    }
+    .category{
+      @include transition(all 0.45s);
+       -webkit-transform: translateZ(30px);
+      transform: translateZ(30px);
+      line-height: 1.1;
+      a{
+        color: $theme-color-second;
+        font-size: 12px;
+        text-transform: uppercase;
+        font-weight: 600;
+        font-family: $font-second;
+        &:hover, &:focus, &:active{
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  &:hover, &:active, &:focus{
+    .portfolio-content{
+       @include box-shadow(0 10px 30px rgba(0, 0, 0, 0.4));
+    }
+    .images{
+      .image-item{
+        .picon-expand{
+          @include opacity(1);
+          margin-top: 0;
+        }
+      }
+      a.link{
+        @include opacity(1);
+        margin-top: 0;
+      }
+    }
+  }
+  ul{
+    list-style: none;
+    padding: 0;
+  }
+  &.portfolio-carousel{
+    margin-bottom: 0;
+  }
+}
+
+.portfolio-carousel-center{
+  .owl-item{
+    @include scale(0.85);
+    @include opacity(0.5);
+    @include transition(all 0.35s);
+    &.active.center{
+      @include scale(1);
+      @include opacity(1);
+    }
+  }
+}
+
+.portfolio-v2{
+  position: relative;
+  overflow: hidden;
+  max-width: 510px;
+  margin: 0 auto;
+  margin-bottom: 30px;
+  .images{
+    position: relative;
+    text-align: center;
+    .item-image a{
+      display: block;
+      &:after{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        @include size(100%, 100%); 
+        background: $black;
+        @include opacity(0);
+        @include scale(0.96);
+        z-index: 1;
+        @include transition(all 0.35s);
+      }
+    }
+    .image-item{
+      .picon-expand{
+        @include opacity(0);
+        @include size(32px, 32px);
+        background: rgba(255, 255, 255, 0.8);
+        line-height: 32px;
+        position: absolute;
+        top: 15px;
+        right: 15px;
+        z-index: 99;
+        text-align: center;
+        @include transition(all 0.35s);
+        margin-top: 30px;
+      }
+    }
+    .link{
+      @include opacity(0);
+      @include transition(all 0.45s);
+      @include size(32px, 32px);
+      background: rgba(255, 255, 255, 0.8);
+      line-height: 33px;
+      position: absolute;
+      top: 55px;
+      right: 15px;
+      z-index: 99;
+      text-align: center;
+      margin-top: 45px;
+    }
+  }
+  .content-inner{
+    position: absolute;
+    @include size(100%, auto);
+    left: 0;
+    bottom: -20px;
+    z-index: 11;
+    @include opacity(0);
+    text-align: left;
+    @include transition(all 0.35s);
+    padding: 0 25px 25px;
+    .title{  
+      margin-top: 30px;
+      @include transition(all 0.35s);
+      a{
+        display: block;
+        font-size: 18px;
+        color: $white;
+        font-weight: 400;
+        line-height: 26px;
+        &:hover, &:focus, &:active{
+          text-decoration: underline;
+        }
+      }
+    }
+    .category{
+      margin-top: 30px;
+      @include transition(all 0.45s);
+      color: $white;
+      a{
+        color: $white;
+        font-size: 11px;
+        text-transform: uppercase;
+        &:hover, &:focus, &:active{
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+  &:hover, &:active, &:focus{
+    .images{
+      .image-item{
+        .picon-expand{
+          @include opacity(1);
+          margin-top: 0;
+        }
+        .item-image a{
+          &:after{
+            @include opacity(0.8);
+            @include scale(1);
+          }
+        }
+      }
+      a.link{
+        @include opacity(1);
+        margin-top: 0;
+      }
+    }
+    .content-inner{
+      @include opacity(1);
+      bottom: 0;
+    }
+    .content-inner{
+      .title{
+        margin-top: 0;
+      }
+      .category{
+        margin-top: 0;
+      }
+    }
+  }
+  ul{
+    list-style: none;
+    padding: 0;
+  }
+  &.portfolio-carousel{
+    margin-bottom: 0;
+  }
+}
+.no-padding{
+  .portfolio-v1{
+    margin-bottom: 0!important;
+  }
+}

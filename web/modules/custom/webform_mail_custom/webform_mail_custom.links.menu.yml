@@ -1,0 +1,15 @@
+webform_mail_custom.admin:
+  title: 'custom addrress mail Event'
+  description: 'Configure custom addrress mail event list'
+  parent: system.admin_config_system
+  route_name: webform_mail_custom_event
+webform_mail_custom_contact.admin:
+  title: 'custom addrress mail Contact'
+  description: 'Configure custom addrress mail Contact list'
+  parent: system.admin_config_system
+  route_name: webform_mail_custom_contact
+webform_mail_custom_candidature.admin:
+  title: 'custom addrress mail Candidature'
+  description: 'Configure custom addrress mail Candidature list'
+  parent: system.admin_config_system
+  route_name: webform_mail_custom_candidature

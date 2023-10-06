@@ -1,0 +1,39 @@
+<?php
+
+/**
+ * @file
+ * Contains country_category_field.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function country_category_field_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the country_category_field module.
+    case 'help.page.country_category_field':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('The country and category field') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function country_category_field_theme() {
+  return [
+    'country_category_field' => [
+      'variables' => [
+        'country' => '',
+        'city' => '',
+        'state' => '',
+      ],
+    ],
+  ];
+}

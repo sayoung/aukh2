@@ -1,0 +1,33 @@
+{#
+/**
+ * @file
+ *
+ * Default product template.
+ *
+ * Available variables:
+ * - attributes: HTML attributes for the wrapper.
+ * - product: The rendered product fields.
+ *   Use 'product' to print them all, or print a subset such as
+ *   'product.title'. Use the following code to exclude the
+ *   printing of a given field:
+ *   @code
+ *   {{ product|without('title') }}
+ *   @endcode
+ * - product_entity: The product entity.
+ * - product_url: The product URL.
+ *  - {{ kint(product_entity)}}
+ * @ingroup themeable
+ */
+#}
+{% set roles = user.getroles(TRUE) %}
+<article{{ attributes }} {% if roles[0] == "instruction" or roles[0] == "comptable" %} id="rokhas-dossier-1" {% else %} id="rokhas-dossier"{% endif %}   >
+
+{% if product.variation_price['#object'] is not null %}
+
+  <h2>{% trans %}Régler un dossier{% endtrans %}</h2>
+
+ {{- product|without('variation_attributes') -}}
+ 
+ {% endif %}
+ 
+</article>

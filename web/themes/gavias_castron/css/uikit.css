@@ -1,0 +1,1601 @@
+/* ========================================================================
+   Component: Grid
+ ========================================================================== */
+/*
+ * 1. Makes grid more robust so that it can be used with other block elements like lists
+ */
+.uk-grid {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+  /* 1 */
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/*
+ * DEPRECATED
+ * Micro clearfix
+ * Can't use `table` because it creates a 1px gap when it becomes a flex item, only in Webkit
+ */
+.uk-grid:before,
+.uk-grid:after {
+  content: "";
+  display: block;
+  overflow: hidden;
+}
+
+.uk-grid:after {
+  clear: both;
+}
+
+/*
+ * Grid cell
+ * 1. Space is allocated solely based on content dimensions
+ * 2. Makes grid more robust so that it can be used with other block elements
+ * 3. DEPRECATED Using `float` to support IE9
+ */
+.uk-grid > * {
+  /* 1 */
+  -ms-flex: none;
+  -webkit-flex: none;
+  flex: none;
+  /* 2 */
+  margin: 0;
+  /* 3 */
+  float: left;
+}
+
+/*
+ * Remove margin from the last-child
+ */
+.uk-grid > * > :last-child {
+  margin-bottom: 0;
+}
+
+/* Grid gutter
+ ========================================================================== */
+/*
+ * Default gutter
+ */
+/* Horizontal */
+.uk-grid {
+  margin-left: -25px;
+}
+
+.uk-grid > * {
+  padding-left: 25px;
+}
+
+/* Vertical */
+.uk-grid + .uk-grid,
+.uk-grid-margin,
+.uk-grid > * > .uk-panel + .uk-panel {
+  margin-top: 25px;
+}
+
+/* Large screen and bigger */
+@media (min-width: 1220px) {
+  /* Horizontal */
+  .uk-grid {
+    margin-left: -30px;
+  }
+
+  .uk-grid > * {
+    padding-left: 30px;
+  }
+
+  /* Vertical */
+  .uk-grid + .uk-grid,
+  .uk-grid-margin,
+  .uk-grid > * > .uk-panel + .uk-panel {
+    margin-top: 30px;
+  }
+}
+/*
+ * Collapse gutter
+ */
+/* Horizontal */
+.uk-grid-collapse {
+  margin-left: 0;
+}
+
+.uk-grid-collapse > * {
+  padding-left: 0;
+}
+
+/* Vertical */
+.uk-grid-collapse + .uk-grid-collapse,
+.uk-grid-collapse > .uk-grid-margin,
+.uk-grid-collapse > * > .uk-panel + .uk-panel {
+  margin-top: 0;
+}
+
+/*
+ * Small gutter
+ */
+/* Horizontal */
+.uk-grid-small {
+  margin-left: -10px;
+}
+
+.uk-grid-small > * {
+  padding-left: 10px;
+}
+
+/* Vertical */
+.uk-grid-small + .uk-grid-small,
+.uk-grid-small > .uk-grid-margin,
+.uk-grid-small > * > .uk-panel + .uk-panel {
+  margin-top: 10px;
+}
+
+/*
+ * Medium gutter
+ */
+/* Horizontal */
+.uk-grid-medium {
+  margin-left: -25px;
+}
+
+.uk-grid-medium > * {
+  padding-left: 25px;
+}
+
+/* Vertical */
+.uk-grid-medium + .uk-grid-medium,
+.uk-grid-medium > .uk-grid-margin,
+.uk-grid-medium > * > .uk-panel + .uk-panel {
+  margin-top: 25px;
+}
+
+/*
+ * Large gutter
+ */
+/* Large screen and bigger */
+@media (min-width: 960px) {
+  /* Horizontal */
+  .uk-grid-large {
+    margin-left: -30px;
+  }
+
+  .uk-grid-large > * {
+    padding-left: 30px;
+  }
+
+  /* Vertical */
+  .uk-grid-large + .uk-grid-large,
+  .uk-grid-large-margin,
+  .uk-grid-large > * > .uk-panel + .uk-panel {
+    margin-top: 30px;
+  }
+}
+/* Extra Large screens */
+@media (min-width: 1220px) {
+  /* Horizontal */
+  .uk-grid-large {
+    margin-left: -50px;
+  }
+
+  .uk-grid-large > * {
+    padding-left: 50px;
+  }
+
+  /* Vertical */
+  .uk-grid-large + .uk-grid-large,
+  .uk-grid-large-margin,
+  .uk-grid-large > * > .uk-panel + .uk-panel {
+    margin-top: 50px;
+  }
+}
+/* Modifier: `uk-grid-divider`
+ ========================================================================== */
+/*
+ * Horizontal divider
+ * Only works with the default gutter. Does not work with gutter collapse, small or large.
+ * Does not work with `uk-push-*`, `uk-pull-*` and not if the columns float into the next row.
+ */
+.uk-grid-divider:not(:empty) {
+  margin-left: -25px;
+  margin-right: -25px;
+}
+
+.uk-grid-divider > * {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.uk-grid-divider > [class*='uk-width-1-']:not(.uk-width-1-1):nth-child(n+2),
+.uk-grid-divider > [class*='uk-width-2-']:nth-child(n+2),
+.uk-grid-divider > [class*='uk-width-3-']:nth-child(n+2),
+.uk-grid-divider > [class*='uk-width-4-']:nth-child(n+2),
+.uk-grid-divider > [class*='uk-width-5-']:nth-child(n+2),
+.uk-grid-divider > [class*='uk-width-6-']:nth-child(n+2),
+.uk-grid-divider > [class*='uk-width-7-']:nth-child(n+2),
+.uk-grid-divider > [class*='uk-width-8-']:nth-child(n+2),
+.uk-grid-divider > [class*='uk-width-9-']:nth-child(n+2) {
+  border-left: 1px solid #ddd;
+}
+
+/* Tablet and bigger */
+@media (min-width: 768px) {
+  .uk-grid-divider > [class*='uk-width-medium-']:not(.uk-width-medium-1-1):nth-child(n+2) {
+    border-left: 1px solid #ddd;
+  }
+}
+/* Desktop and bigger */
+@media (min-width: 960px) {
+  .uk-grid-divider > [class*='uk-width-large-']:not(.uk-width-large-1-1):nth-child(n+2) {
+    border-left: 1px solid #ddd;
+  }
+}
+/* Large screen and bigger */
+@media (min-width: 1220px) {
+  /*
+   * Large gutter
+   */
+  .uk-grid-divider:not(:empty) {
+    margin-left: -30px;
+    margin-right: -30px;
+  }
+
+  .uk-grid-divider > * {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .uk-grid-divider:empty {
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+}
+/*
+ * Vertical divider
+ */
+.uk-grid-divider:empty {
+  margin-top: 25px;
+  margin-bottom: 25px;
+  border-top: 1px solid #ddd;
+}
+
+/* Match panels in grids
+ ========================================================================== */
+/*
+ * 1. Behave like a block element
+ */
+.uk-grid-match > * {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  /* 1 */
+  -ms-flex-wrap: wrap;
+  -webkit-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.uk-grid-match > * > * {
+  /* 1 */
+  -ms-flex: none;
+  -webkit-flex: none;
+  flex: none;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/* Even grid cell widths
+ ========================================================================== */
+[class*='uk-grid-width'] > * {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.uk-grid-width-1-2 > * {
+  width: 50%;
+}
+
+.uk-grid-width-1-3 > * {
+  width: 33.333%;
+}
+
+.uk-grid-width-1-4 > * {
+  width: 25%;
+}
+
+.uk-grid-width-1-5 > * {
+  width: 20%;
+}
+
+.uk-grid-width-1-6 > * {
+  width: 16.666%;
+}
+
+.uk-grid-width-1-10 > * {
+  width: 10%;
+}
+
+.uk-grid-width-auto > * {
+  width: auto;
+}
+
+/* Phone landscape and bigger */
+@media (min-width: 380px) {
+  .uk-grid-width-small-1-1 > * {
+    width: 100%;
+  }
+
+  .uk-grid-width-small-1-2 > * {
+    width: 50%;
+  }
+
+  .uk-grid-width-small-1-3 > * {
+    width: 33.333%;
+  }
+
+  .uk-grid-width-small-1-4 > * {
+    width: 25%;
+  }
+
+  .uk-grid-width-small-1-5 > * {
+    width: 20%;
+  }
+
+  .uk-grid-width-small-1-6 > * {
+    width: 16.666%;
+  }
+
+  .uk-grid-width-small-1-10 > * {
+    width: 10%;
+  }
+}
+/* Tablet and bigger */
+@media (min-width: 768px) {
+  .uk-grid-width-medium-1-1 > * {
+    width: 100%;
+  }
+
+  .uk-grid-width-medium-1-2 > * {
+    width: 50%;
+  }
+
+  .uk-grid-width-medium-1-3 > * {
+    width: 33.333%;
+  }
+
+  .uk-grid-width-medium-1-4 > * {
+    width: 25%;
+  }
+
+  .uk-grid-width-medium-1-5 > * {
+    width: 20%;
+  }
+
+  .uk-grid-width-medium-1-6 > * {
+    width: 16.666%;
+  }
+
+  .uk-grid-width-medium-1-10 > * {
+    width: 10%;
+  }
+}
+/* Desktop and bigger */
+@media (min-width: 960px) {
+  .uk-grid-width-large-1-1 > * {
+    width: 100%;
+  }
+
+  .uk-grid-width-large-1-2 > * {
+    width: 50%;
+  }
+
+  .uk-grid-width-large-1-3 > * {
+    width: 33.333%;
+  }
+
+  .uk-grid-width-large-1-4 > * {
+    width: 25%;
+  }
+
+  .uk-grid-width-large-1-5 > * {
+    width: 20%;
+  }
+
+  .uk-grid-width-large-1-6 > * {
+    width: 16.666%;
+  }
+
+  .uk-grid-width-large-1-10 > * {
+    width: 10%;
+  }
+}
+/* Large screen and bigger */
+@media (min-width: 1220px) {
+  .uk-grid-width-xlarge-1-1 > * {
+    width: 100%;
+  }
+
+  .uk-grid-width-xlarge-1-2 > * {
+    width: 50%;
+  }
+
+  .uk-grid-width-xlarge-1-3 > * {
+    width: 33.333%;
+  }
+
+  .uk-grid-width-xlarge-1-4 > * {
+    width: 25%;
+  }
+
+  .uk-grid-width-xlarge-1-5 > * {
+    width: 20%;
+  }
+
+  .uk-grid-width-xlarge-1-6 > * {
+    width: 16.666%;
+  }
+
+  .uk-grid-width-xlarge-1-10 > * {
+    width: 10%;
+  }
+}
+/* Sub-objects: `uk-width-*`
+ ========================================================================== */
+[class*='uk-width'] {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+/*
+ * Widths
+ */
+/* Whole */
+.uk-width-1-1 {
+  width: 100%;
+}
+
+/* Halves */
+.uk-width-1-2,
+.uk-width-2-4,
+.uk-width-3-6,
+.uk-width-5-10 {
+  width: 50%;
+}
+
+/* Thirds */
+.uk-width-1-3,
+.uk-width-2-6 {
+  width: 33.333%;
+}
+
+.uk-width-2-3,
+.uk-width-4-6 {
+  width: 66.666%;
+}
+
+/* Quarters */
+.uk-width-1-4 {
+  width: 25%;
+}
+
+.uk-width-3-4 {
+  width: 75%;
+}
+
+/* Fifths */
+.uk-width-1-5,
+.uk-width-2-10 {
+  width: 20%;
+}
+
+.uk-width-2-5,
+.uk-width-4-10 {
+  width: 40%;
+}
+
+.uk-width-3-5,
+.uk-width-6-10 {
+  width: 60%;
+}
+
+.uk-width-4-5,
+.uk-width-8-10 {
+  width: 80%;
+}
+
+/* Sixths */
+.uk-width-1-6 {
+  width: 16.666%;
+}
+
+.uk-width-5-6 {
+  width: 83.333%;
+}
+
+/* Tenths */
+.uk-width-1-10 {
+  width: 10%;
+}
+
+.uk-width-3-10 {
+  width: 30%;
+}
+
+.uk-width-7-10 {
+  width: 70%;
+}
+
+.uk-width-9-10 {
+  width: 90%;
+}
+
+/* Phone landscape and bigger */
+@media (min-width: 380px) {
+  /* Whole */
+  .uk-width-small-1-1 {
+    width: 100%;
+  }
+
+  /* Halves */
+  .uk-width-small-1-2,
+  .uk-width-small-2-4,
+  .uk-width-small-3-6,
+  .uk-width-small-5-10 {
+    width: 50%;
+  }
+
+  /* Thirds */
+  .uk-width-small-1-3,
+  .uk-width-small-2-6 {
+    width: 33.333%;
+  }
+
+  .uk-width-small-2-3,
+  .uk-width-small-4-6 {
+    width: 66.666%;
+  }
+
+  /* Quarters */
+  .uk-width-small-1-4 {
+    width: 25%;
+  }
+
+  .uk-width-small-3-4 {
+    width: 75%;
+  }
+
+  /* Fifths */
+  .uk-width-small-1-5,
+  .uk-width-small-2-10 {
+    width: 20%;
+  }
+
+  .uk-width-small-2-5,
+  .uk-width-small-4-10 {
+    width: 40%;
+  }
+
+  .uk-width-small-3-5,
+  .uk-width-small-6-10 {
+    width: 60%;
+  }
+
+  .uk-width-small-4-5,
+  .uk-width-small-8-10 {
+    width: 80%;
+  }
+
+  /* Sixths */
+  .uk-width-small-1-6 {
+    width: 16.666%;
+  }
+
+  .uk-width-small-5-6 {
+    width: 83.333%;
+  }
+
+  /* Tenths */
+  .uk-width-small-1-10 {
+    width: 10%;
+  }
+
+  .uk-width-small-3-10 {
+    width: 30%;
+  }
+
+  .uk-width-small-7-10 {
+    width: 70%;
+  }
+
+  .uk-width-small-9-10 {
+    width: 90%;
+  }
+}
+/* Tablet and bigger */
+@media (min-width: 768px) {
+  /* Whole */
+  .uk-width-medium-1-1 {
+    width: 100%;
+  }
+
+  /* Halves */
+  .uk-width-medium-1-2,
+  .uk-width-medium-2-4,
+  .uk-width-medium-3-6,
+  .uk-width-medium-5-10 {
+    width: 50%;
+  }
+
+  /* Thirds */
+  .uk-width-medium-1-3,
+  .uk-width-medium-2-6 {
+    width: 33.333%;
+  }
+
+  .uk-width-medium-2-3,
+  .uk-width-medium-4-6 {
+    width: 66.666%;
+  }
+
+  /* Quarters */
+  .uk-width-medium-1-4 {
+    width: 25%;
+  }
+
+  .uk-width-medium-3-4 {
+    width: 75%;
+  }
+
+  /* Fifths */
+  .uk-width-medium-1-5,
+  .uk-width-medium-2-10 {
+    width: 20%;
+  }
+
+  .uk-width-medium-2-5,
+  .uk-width-medium-4-10 {
+    width: 40%;
+  }
+
+  .uk-width-medium-3-5,
+  .uk-width-medium-6-10 {
+    width: 60%;
+  }
+
+  .uk-width-medium-4-5,
+  .uk-width-medium-8-10 {
+    width: 80%;
+  }
+
+  /* Sixths */
+  .uk-width-medium-1-6 {
+    width: 16.666%;
+  }
+
+  .uk-width-medium-5-6 {
+    width: 83.333%;
+  }
+
+  /* Tenths */
+  .uk-width-medium-1-10 {
+    width: 10%;
+  }
+
+  .uk-width-medium-3-10 {
+    width: 30%;
+  }
+
+  .uk-width-medium-7-10 {
+    width: 70%;
+  }
+
+  .uk-width-medium-9-10 {
+    width: 90%;
+  }
+}
+/* Desktop and bigger */
+@media (min-width: 960px) {
+  /* Whole */
+  .uk-width-large-1-1 {
+    width: 100%;
+  }
+
+  /* Halves */
+  .uk-width-large-1-2,
+  .uk-width-large-2-4,
+  .uk-width-large-3-6,
+  .uk-width-large-5-10 {
+    width: 50%;
+  }
+
+  /* Thirds */
+  .uk-width-large-1-3,
+  .uk-width-large-2-6 {
+    width: 33.333%;
+  }
+
+  .uk-width-large-2-3,
+  .uk-width-large-4-6 {
+    width: 66.666%;
+  }
+
+  /* Quarters */
+  .uk-width-large-1-4 {
+    width: 25%;
+  }
+
+  .uk-width-large-3-4 {
+    width: 75%;
+  }
+
+  /* Fifths */
+  .uk-width-large-1-5,
+  .uk-width-large-2-10 {
+    width: 20%;
+  }
+
+  .uk-width-large-2-5,
+  .uk-width-large-4-10 {
+    width: 40%;
+  }
+
+  .uk-width-large-3-5,
+  .uk-width-large-6-10 {
+    width: 60%;
+  }
+
+  .uk-width-large-4-5,
+  .uk-width-large-8-10 {
+    width: 80%;
+  }
+
+  /* Sixths */
+  .uk-width-large-1-6 {
+    width: 16.666%;
+  }
+
+  .uk-width-large-5-6 {
+    width: 83.333%;
+  }
+
+  /* Tenths */
+  .uk-width-large-1-10 {
+    width: 10%;
+  }
+
+  .uk-width-large-3-10 {
+    width: 30%;
+  }
+
+  .uk-width-large-7-10 {
+    width: 70%;
+  }
+
+  .uk-width-large-9-10 {
+    width: 90%;
+  }
+}
+/* Large screen and bigger */
+@media (min-width: 1220px) {
+  /* Whole */
+  .uk-width-xlarge-1-1 {
+    width: 100%;
+  }
+
+  /* Halves */
+  .uk-width-xlarge-1-2,
+  .uk-width-xlarge-2-4,
+  .uk-width-xlarge-3-6,
+  .uk-width-xlarge-5-10 {
+    width: 50%;
+  }
+
+  /* Thirds */
+  .uk-width-xlarge-1-3,
+  .uk-width-xlarge-2-6 {
+    width: 33.333%;
+  }
+
+  .uk-width-xlarge-2-3,
+  .uk-width-xlarge-4-6 {
+    width: 66.666%;
+  }
+
+  /* Quarters */
+  .uk-width-xlarge-1-4 {
+    width: 25%;
+  }
+
+  .uk-width-xlarge-3-4 {
+    width: 75%;
+  }
+
+  /* Fifths */
+  .uk-width-xlarge-1-5,
+  .uk-width-xlarge-2-10 {
+    width: 20%;
+  }
+
+  .uk-width-xlarge-2-5,
+  .uk-width-xlarge-4-10 {
+    width: 40%;
+  }
+
+  .uk-width-xlarge-3-5,
+  .uk-width-xlarge-6-10 {
+    width: 60%;
+  }
+
+  .uk-width-xlarge-4-5,
+  .uk-width-xlarge-8-10 {
+    width: 80%;
+  }
+
+  /* Sixths */
+  .uk-width-xlarge-1-6 {
+    width: 16.666%;
+  }
+
+  .uk-width-xlarge-5-6 {
+    width: 83.333%;
+  }
+
+  /* Tenths */
+  .uk-width-xlarge-1-10 {
+    width: 10%;
+  }
+
+  .uk-width-xlarge-3-10 {
+    width: 30%;
+  }
+
+  .uk-width-xlarge-7-10 {
+    width: 70%;
+  }
+
+  .uk-width-xlarge-9-10 {
+    width: 90%;
+  }
+}
+/* Sub-object: `uk-push-*` and `uk-pull-*`
+ ========================================================================== */
+/*
+ * Source ordering
+ * Works only with `uk-width-medium-*`
+ */
+/* Tablet and bigger */
+@media (min-width: 768px) {
+  [class*='uk-push-'],
+  [class*='uk-pull-'] {
+    position: relative;
+  }
+
+  /*
+   * Push
+   */
+  /* Halves */
+  .uk-push-1-2,
+  .uk-push-2-4,
+  .uk-push-3-6,
+  .uk-push-5-10 {
+    left: 50%;
+  }
+
+  /* Thirds */
+  .uk-push-1-3,
+  .uk-push-2-6 {
+    left: 33.333%;
+  }
+
+  .uk-push-2-3,
+  .uk-push-4-6 {
+    left: 66.666%;
+  }
+
+  /* Quarters */
+  .uk-push-1-4 {
+    left: 25%;
+  }
+
+  .uk-push-3-4 {
+    left: 75%;
+  }
+
+  /* Fifths */
+  .uk-push-1-5,
+  .uk-push-2-10 {
+    left: 20%;
+  }
+
+  .uk-push-2-5,
+  .uk-push-4-10 {
+    left: 40%;
+  }
+
+  .uk-push-3-5,
+  .uk-push-6-10 {
+    left: 60%;
+  }
+
+  .uk-push-4-5,
+  .uk-push-8-10 {
+    left: 80%;
+  }
+
+  /* Sixths */
+  .uk-push-1-6 {
+    left: 16.666%;
+  }
+
+  .uk-push-5-6 {
+    left: 83.333%;
+  }
+
+  /* Tenths */
+  .uk-push-1-10 {
+    left: 10%;
+  }
+
+  .uk-push-3-10 {
+    left: 30%;
+  }
+
+  .uk-push-7-10 {
+    left: 70%;
+  }
+
+  .uk-push-9-10 {
+    left: 90%;
+  }
+
+  /*
+   * Pull
+   */
+  /* Halves */
+  .uk-pull-1-2,
+  .uk-pull-2-4,
+  .uk-pull-3-6,
+  .uk-pull-5-10 {
+    left: -50%;
+  }
+
+  /* Thirds */
+  .uk-pull-1-3,
+  .uk-pull-2-6 {
+    left: -33.333%;
+  }
+
+  .uk-pull-2-3,
+  .uk-pull-4-6 {
+    left: -66.666%;
+  }
+
+  /* Quarters */
+  .uk-pull-1-4 {
+    left: -25%;
+  }
+
+  .uk-pull-3-4 {
+    left: -75%;
+  }
+
+  /* Fifths */
+  .uk-pull-1-5,
+  .uk-pull-2-10 {
+    left: -20%;
+  }
+
+  .uk-pull-2-5,
+  .uk-pull-4-10 {
+    left: -40%;
+  }
+
+  .uk-pull-3-5,
+  .uk-pull-6-10 {
+    left: -60%;
+  }
+
+  .uk-pull-4-5,
+  .uk-pull-8-10 {
+    left: -80%;
+  }
+
+  /* Sixths */
+  .uk-pull-1-6 {
+    left: -16.666%;
+  }
+
+  .uk-pull-5-6 {
+    left: -83.333%;
+  }
+
+  /* Tenths */
+  .uk-pull-1-10 {
+    left: -10%;
+  }
+
+  .uk-pull-3-10 {
+    left: -30%;
+  }
+
+  .uk-pull-7-10 {
+    left: -70%;
+  }
+
+  .uk-pull-9-10 {
+    left: -90%;
+  }
+}
+/* ========================================================================
+   Component: Animation
+ ========================================================================== */
+[class*='uk-animation-'] {
+  -webkit-animation-duration: 0.5s;
+  animation-duration: 0.5s;
+  -webkit-animation-timing-function: ease-out;
+  animation-timing-function: ease-out;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+/* Hide animated element if scrollspy is used */
+@media screen {
+  [data-uk-scrollspy*='uk-animation-']:not([data-uk-scrollspy*='target']) {
+    opacity: 0;
+  }
+}
+/*
+ * Fade
+ * Higher specificity (!important) needed because of reverse modifier
+ */
+.uk-animation-fade {
+  -webkit-animation-name: uk-fade;
+  animation-name: uk-fade;
+  -webkit-animation-duration: 0.8s;
+  animation-duration: 0.8s;
+  -webkit-animation-timing-function: linear !important;
+  animation-timing-function: linear !important;
+}
+
+/*
+ * Fade with scale
+ */
+.uk-animation-scale-up {
+  -webkit-animation-name: uk-fade-scale-02;
+  animation-name: uk-fade-scale-02;
+}
+
+.uk-animation-scale-down {
+  -webkit-animation-name: uk-fade-scale-18;
+  animation-name: uk-fade-scale-18;
+}
+
+/*
+ * Fade with slide
+ */
+.uk-animation-slide-top {
+  -webkit-animation-name: uk-fade-top;
+  animation-name: uk-fade-top;
+}
+
+.uk-animation-slide-bottom {
+  -webkit-animation-name: uk-fade-bottom;
+  animation-name: uk-fade-bottom;
+}
+
+.uk-animation-slide-left {
+  -webkit-animation-name: uk-fade-left;
+  animation-name: uk-fade-left;
+}
+
+.uk-animation-slide-right {
+  -webkit-animation-name: uk-fade-right;
+  animation-name: uk-fade-right;
+}
+
+/*
+ * Scale
+ */
+.uk-animation-scale {
+  -webkit-animation-name: uk-scale-12;
+  animation-name: uk-scale-12;
+}
+
+/*
+ * Shake
+ */
+.uk-animation-shake {
+  -webkit-animation-name: uk-shake;
+  animation-name: uk-shake;
+}
+
+/* Direction modifiers
+ ========================================================================== */
+.uk-animation-reverse {
+  -webkit-animation-direction: reverse;
+  animation-direction: reverse;
+  -webkit-animation-timing-function: ease-in;
+  animation-timing-function: ease-in;
+}
+
+/* Duration modifiers
+========================================================================== */
+.uk-animation-15 {
+  -webkit-animation-duration: 15s;
+  animation-duration: 15s;
+}
+
+/* Origin modifiers
+========================================================================== */
+.uk-animation-top-left {
+  -webkit-transform-origin: 0 0;
+  transform-origin: 0 0;
+}
+
+.uk-animation-top-center {
+  -webkit-transform-origin: 50% 0;
+  transform-origin: 50% 0;
+}
+
+.uk-animation-top-right {
+  -webkit-transform-origin: 100% 0;
+  transform-origin: 100% 0;
+}
+
+.uk-animation-middle-left {
+  -webkit-transform-origin: 0 50%;
+  transform-origin: 0 50%;
+}
+
+.uk-animation-middle-right {
+  -webkit-transform-origin: 100% 50%;
+  transform-origin: 100% 50%;
+}
+
+.uk-animation-bottom-left {
+  -webkit-transform-origin: 0 100%;
+  transform-origin: 0 100%;
+}
+
+.uk-animation-bottom-center {
+  -webkit-transform-origin: 50% 100%;
+  transform-origin: 50% 100%;
+}
+
+.uk-animation-bottom-right {
+  -webkit-transform-origin: 100% 100%;
+  transform-origin: 100% 100%;
+}
+
+/* Sub-object: `uk-animation-hover`
+========================================================================== */
+/*
+ * Enable animation only on hover
+ * Note: Firefox also needs this because animations are not triggered when switching between display `hidden` and `block`
+ */
+.uk-animation-hover:not(:hover),
+.uk-animation-hover:not(:hover) [class*='uk-animation-'],
+.uk-touch .uk-animation-hover:not(.uk-hover),
+.uk-touch .uk-animation-hover:not(.uk-hover) [class*='uk-animation-'] {
+  -webkit-animation-name: none;
+  animation-name: none;
+}
+
+/* Keyframes: Fade
+ * Used by dropdown, datepicker and slideshow component
+ ========================================================================== */
+@-webkit-keyframes uk-fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes uk-fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+/* Keyframes: Fade with slide
+ ========================================================================== */
+/*
+ * Top
+ */
+@-webkit-keyframes uk-fade-top {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+  }
+}
+@keyframes uk-fade-top {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/*
+ * Bottom
+ */
+@-webkit-keyframes uk-fade-bottom {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+  }
+}
+@keyframes uk-fade-bottom {
+  0% {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/*
+ * Left
+ */
+@-webkit-keyframes uk-fade-left {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+  }
+}
+@keyframes uk-fade-left {
+  0% {
+    opacity: 0;
+    transform: translateX(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+/*
+ * Right
+ */
+@-webkit-keyframes uk-fade-right {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+  }
+}
+@keyframes uk-fade-right {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+/* Keyframes: Fade with scale
+ ========================================================================== */
+/*
+ * Scale by 0.2
+ */
+@-webkit-keyframes uk-fade-scale-02 {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0.2);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+  }
+}
+@keyframes uk-fade-scale-02 {
+  0% {
+    opacity: 0;
+    transform: scale(0.2);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+/*
+ * Scale by 1.5
+ * Used by slideshow component
+ */
+@-webkit-keyframes uk-fade-scale-15 {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(1.5);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+  }
+}
+@keyframes uk-fade-scale-15 {
+  0% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+/*
+ * Scale by 1.8
+ */
+@-webkit-keyframes uk-fade-scale-18 {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(1.8);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: scale(1);
+  }
+}
+@keyframes uk-fade-scale-18 {
+  0% {
+    opacity: 0;
+    transform: scale(1.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+/* Keyframes: Slide
+ * Used by slideshow component
+ ========================================================================== */
+/*
+ * Left
+ */
+@-webkit-keyframes uk-slide-left {
+  0% {
+    -webkit-transform: translateX(-100%);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+  }
+}
+@keyframes uk-slide-left {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+/*
+ * Right
+ */
+@-webkit-keyframes uk-slide-right {
+  0% {
+    -webkit-transform: translateX(100%);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+  }
+}
+@keyframes uk-slide-right {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+/*
+ * Left third
+ */
+@-webkit-keyframes uk-slide-left-33 {
+  0% {
+    -webkit-transform: translateX(33%);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+  }
+}
+@keyframes uk-slide-left-33 {
+  0% {
+    transform: translateX(33%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+/*
+ * Right third
+ */
+@-webkit-keyframes uk-slide-right-33 {
+  0% {
+    -webkit-transform: translateX(-33%);
+  }
+  100% {
+    -webkit-transform: translateX(0);
+  }
+}
+@keyframes uk-slide-right-33 {
+  0% {
+    transform: translateX(-33%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+/* Keyframes: Scale
+ ========================================================================== */
+@-webkit-keyframes uk-scale-12 {
+  0% {
+    -webkit-transform: scale(1.2);
+  }
+  100% {
+    -webkit-transform: scale(1);
+  }
+}
+@keyframes uk-scale-12 {
+  0% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+/* Keyframes: Rotate
+ * Used by icon component
+ ========================================================================== */
+@-webkit-keyframes uk-rotate {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+  }
+}
+@keyframes uk-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(359deg);
+  }
+}
+/* Keyframes: Shake
+ ========================================================================== */
+@-webkit-keyframes uk-shake {
+  0%, 100% {
+    -webkit-transform: translateX(0);
+  }
+  10% {
+    -webkit-transform: translateX(-9px);
+  }
+  20% {
+    -webkit-transform: translateX(8px);
+  }
+  30% {
+    -webkit-transform: translateX(-7px);
+  }
+  40% {
+    -webkit-transform: translateX(6px);
+  }
+  50% {
+    -webkit-transform: translateX(-5px);
+  }
+  60% {
+    -webkit-transform: translateX(4px);
+  }
+  70% {
+    -webkit-transform: translateX(-3px);
+  }
+  80% {
+    -webkit-transform: translateX(2px);
+  }
+  90% {
+    -webkit-transform: translateX(-1px);
+  }
+}
+@keyframes uk-shake {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  10% {
+    transform: translateX(-9px);
+  }
+  20% {
+    transform: translateX(8px);
+  }
+  30% {
+    transform: translateX(-7px);
+  }
+  40% {
+    transform: translateX(6px);
+  }
+  50% {
+    transform: translateX(-5px);
+  }
+  60% {
+    transform: translateX(4px);
+  }
+  70% {
+    transform: translateX(-3px);
+  }
+  80% {
+    transform: translateX(2px);
+  }
+  90% {
+    transform: translateX(-1px);
+  }
+}
+/* Keyframes: Fade with slide fixed
+ * Used by dropdown and search component
+ ========================================================================== */
+/*
+ * Top fixed
+ */
+@-webkit-keyframes uk-slide-top-fixed {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+  }
+}
+@keyframes uk-slide-top-fixed {
+  0% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+/*
+ * Bottom fixed
+ */
+@-webkit-keyframes uk-slide-bottom-fixed {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+  }
+}
+@keyframes uk-slide-bottom-fixed {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

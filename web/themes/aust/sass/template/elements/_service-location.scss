@@ -1,0 +1,58 @@
+.gsc-service-location{
+   padding-bottom: 45px;
+   .box-item{
+      padding-right: 30px;
+      position: relative;
+      &:after{
+         content: '';
+         @include size(1px, 200px);
+         background: $border-color;
+         right: -2px;
+         top: -20px;
+         position: absolute;
+         z-index: 1;
+         @media(max-width: $screen-sm-max){
+            display: none;
+         }
+      }
+      .title{
+         font-size: 18px;
+         font-family: $font-second;
+         font-weight: 600;
+         color: $black;
+         margin-bottom: 20px;
+      }
+      .address, .phone, .email{
+         font-size: 16px;
+         font-weight: 400;
+         font-family: $font-second;
+         margin-bottom: 10px;
+         i{
+            color: $theme-color;
+            font-size: 16px;
+            margin-right: 6px;
+         }
+      }
+   }
+   ul.uk-grid{
+      overflow: hidden;
+      padding: 20px 0;
+   }
+   &.text-light{
+      .box-item{
+         &:after{
+            background: rgba(255, 255, 255, 0.4)!important;
+         }
+         .title{
+            color: $white;
+         }
+         .address, .phone, .email{   
+            color: rgba(209, 209, 209, 1)!important;
+            i{
+               color: $white!important; 
+            }
+         }
+      }
+   }
+}
+

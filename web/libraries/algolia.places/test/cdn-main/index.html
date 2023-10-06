@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+  </head>
+  <body>
+    <input type="search" id="search-box" class="form-control" placeholder="Where are we going?" />
+    <script type="text/javascript" src="../../dist/cdn/places.js"></script>
+    <script>
+      window.placesAutocomplete = places({
+        appId: 'plFMJJT5O9PC',
+        apiKey: 'a0f8e2d480b9d119f485836d77db4e53',
+        container: document.querySelector('#search-box'),
+        debug: true,
+      });
+    </script>
+  </body>
+</html>
